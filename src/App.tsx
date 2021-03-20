@@ -1,30 +1,29 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import "./App.css";
+import { Bio } from "./Pages/Bio";
 import { Home } from "./Pages/Home";
 import { Media } from "./Pages/Media";
-import { Bio } from "./Pages/Bio";
 import { Contact } from "./Pages/Contact";
-import "./App.css";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { Row, Col } from "antd";
 
 export const App: React.FC<{}> = () => (
   <Router>
     <div className="App">
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/media">Media</Link>
-          </li>
-          <li>
-            <Link to="/bio">Bio</Link>
-          </li>
-          <li>
-            <Link to="/contact">Contact</Link>
-          </li>
-        </ul>
-      </nav>
+      <Row>
+        <Col span={6}>
+          <Link to="/">Home</Link>
+        </Col>
+        <Col span={6}>
+          <Link to="/media">Media</Link>
+        </Col>
+        <Col span={6}>
+          <Link to="/bio">Bio</Link>
+        </Col>
+        <Col span={6}>
+          <Link to="/contact">Contact</Link>
+        </Col>
+      </Row>
 
       {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}

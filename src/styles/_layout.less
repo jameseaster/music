@@ -1,12 +1,40 @@
-.App {
+// Entire app container
+.app-container {
   display: flex;
-  flex-direction: column;
   text-align: center;
-  background-color: #282c34;
-  color: white;
+  background-color: @background1;
+  color: white; // TODO: extract to typography
   min-height: 100vh;
+  padding: 1% 2%;
+
+  // Remove padding when on a smaller screen (iPhone)
+  @media (max-width: 700px) {
+    padding: 0;
+  }
+
+  .ant-layout-content {
+    background-color: @background1;
+    display: grid;
+    padding: 0.5% 0;
+
+    // Remove padding when on a smaller screen (iPhone)
+    @media (max-width: 700px) {
+      padding: 0;
+    }
+  }
 }
 
-h2 {
-  color: white;
+// Pages Container
+.pages-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px 24px;
+  background-color: silver;
+}
+
+// FooterCredits component
+.footer {
+  background-color: @background1;
+  color: white; // TODO: extract to typography
 }

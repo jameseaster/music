@@ -1,23 +1,45 @@
+// React Imports
 import React from "react";
 import { Link } from "react-router-dom";
-import { Divider, Row, Col } from "antd";
 
+// Ant Design Imports
+import { Menu, Layout } from "antd";
+
+// Constants
+const { Header } = Layout;
+
+/**
+ * Navbar
+ *
+ * The Navbar is wrapped in Ant Design's Header component to
+ * take advantage of some baked in Layout features. It renders
+ * at the top of the webpage and utilizes react-router-dom to
+ * navigate between Pages
+ */
 export const Navbar: React.FC<{}> = () => (
-  <div className="container">
-    <Divider orientation="left">James Easter</Divider>
-    <Row gutter={16}>
-      <Col span={6}>
+  <Header className="header">
+    <Menu
+      theme="dark"
+      mode="horizontal"
+      defaultSelectedKeys={["Home"]}
+      style={{
+        textAlign: "center",
+        justifyContent: "space-around",
+        display: "flex",
+      }}
+    >
+      <Menu.Item key="Home">
         <Link to="/">Home</Link>
-      </Col>
-      <Col span={6}>
+      </Menu.Item>
+      <Menu.Item key="Media">
         <Link to="/media">Media</Link>
-      </Col>
-      <Col span={6}>
+      </Menu.Item>
+      <Menu.Item key="Bio">
         <Link to="/bio">Bio</Link>
-      </Col>
-      <Col span={6}>
+      </Menu.Item>
+      <Menu.Item key="Contact">
         <Link to="/contact">Contact</Link>
-      </Col>
-    </Row>
-  </div>
+      </Menu.Item>
+    </Menu>
+  </Header>
 );

@@ -1,5 +1,5 @@
 import React from "react";
-import "./App.less";
+import "./styles/app.less";
 import { Pages } from "./Pages";
 import { Navbar } from "./Components/Navbar";
 import { BrowserRouter as Router } from "react-router-dom";

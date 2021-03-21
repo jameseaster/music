@@ -1,5 +1,4 @@
 import React from "react";
-import "./index.less";
 
 export const Home: React.FC<{}> = () => {
   return (

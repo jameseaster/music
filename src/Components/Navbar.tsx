@@ -1,5 +1,4 @@
 import React from "react";
-import "./index.less";
 import { Link } from "react-router-dom";
 import { Divider, Row, Col } from "antd";
 

@@ -1,5 +1,10 @@
 import React from "react";
+import "./index.less";
 
 export const Home: React.FC<{}> = () => {
-  return <h2>Home</h2>;
+  return (
+    <div className="pages-container">
+      <h2>Home</h2>
+    </div>
+  );
 };

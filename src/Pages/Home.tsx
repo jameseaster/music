@@ -1,6 +1,9 @@
 // React Imports
 import React from "react";
 
+// Components
+import { ImageCarousel } from "../Components/ImageCarousel";
+
 /**
  * Home Page
  *
@@ -10,7 +13,7 @@ import React from "react";
 export const Home: React.FC<{}> = () => {
   return (
     <div className="pages-container">
-      <h2>Home</h2>
+      <ImageCarousel />
     </div>
   );
 };

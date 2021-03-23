@@ -6,7 +6,6 @@ import { Switch, Route } from "react-router-dom";
 import { Layout } from "antd";
 
 // Components
-import { Bio } from "./Bio";
 import { Home } from "./Home";
 import { Media } from "./Media";
 import { Contact } from "./Contact";
@@ -27,11 +26,6 @@ export const Pages: React.FC<{}> = () => (
     <Route path="/media">
       <Content>
         <Media />
-      </Content>
-    </Route>
-    <Route path="/bio">
-      <Content>
-        <Bio />
       </Content>
     </Route>
     <Route path="/contact">

@@ -8,7 +8,7 @@ module.exports = {
         lessLoaderOptions: {
           lessOptions: {
             modifyVars: {
-              // How to modify stock variables in ant design
+              // Modify stock variables in ant design
               // "@primary-color": "#1DA57A"
             },
             javascriptEnabled: true,

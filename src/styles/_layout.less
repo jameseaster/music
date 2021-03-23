@@ -23,6 +23,19 @@
   }
 }
 
+// Header menu
+.header-menu {
+  text-align: center;
+  justify-content: center;
+  display: flex;
+}
+
+// Only may the name bolder on the Navbar instead of the blue outline
+.ant-menu.ant-menu-dark .ant-menu-item-selected {
+  background-color: transparent;
+  font-weight: bolder;
+}
+
 // Pages Container
 .pages-container {
   display: flex;
@@ -34,13 +47,23 @@
   // border-radius: 0% 0% 1% 1%;
 }
 
+// Allows Ant Design Carousel to be visible
+.slick-list {
+  max-width: 98vw;
+}
+
+.contact-container {
+  width: 70%;
+  max-width: 500px;
+}
+
+.bio-container {
+  width: 80%;
+  max-width: 500px;
+}
+
 // FooterCredits component
 .footer {
   background-color: @background1;
   color: white; // TODO: extract to typography
-}
-
-// Allows Ant Design Carousel to be visible
-.slick-list {
-  max-width: 98vw;
 }

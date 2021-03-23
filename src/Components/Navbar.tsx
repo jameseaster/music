@@ -19,26 +19,19 @@ const { Header } = Layout;
 export const Navbar: React.FC<{}> = () => (
   <Header className="header">
     <Menu
+      className="header-menu"
       theme="dark"
       mode="horizontal"
       defaultSelectedKeys={["Home"]}
-      style={{
-        textAlign: "center",
-        justifyContent: "space-around",
-        display: "flex",
-      }}
     >
-      <Menu.Item key="Home">
+      <Menu.Item key="Home" style={{ width: "15%", minWidth: "100px" }}>
         <Link to="/">Home</Link>
       </Menu.Item>
-      <Menu.Item key="Media">
+      <Menu.Item key="Media" style={{ width: "15%", minWidth: "100px" }}>
         <Link to="/media">Media</Link>
       </Menu.Item>
-      <Menu.Item key="Bio">
-        <Link to="/bio">Bio</Link>
-      </Menu.Item>
-      <Menu.Item key="Contact">
-        <Link to="/contact">Contact</Link>
+      <Menu.Item key="Contact" style={{ width: "15%", minWidth: "130px" }}>
+        <Link to="/contact">About / Contact</Link>
       </Menu.Item>
     </Menu>
   </Header>

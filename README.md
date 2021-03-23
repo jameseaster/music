@@ -1,12 +1,3 @@
-<style>
-  body {
-      max-width: 500px;
-  }
-  .center {
-    text-align: center;
-  }
-</style>
-
 # James Easter Music
 
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-brightgreen.svg)](https://github.com/prettier/prettier)

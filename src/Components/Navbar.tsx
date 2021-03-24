@@ -30,7 +30,7 @@ export const Navbar: React.FC<{}> = () => (
       <Menu.Item key="Media" style={{ width: "15%", minWidth: "100px" }}>
         <Link to="/media">Media</Link>
       </Menu.Item>
-      <Menu.Item key="Contact" style={{ width: "15%", minWidth: "130px" }}>
+      <Menu.Item key="Contact" style={{ width: "15%", minWidth: "148px" }}>
         <Link to="/contact">About / Contact</Link>
       </Menu.Item>
     </Menu>

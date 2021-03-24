@@ -12,6 +12,11 @@
     padding: 0;
   }
 
+  // Class for Layout from Ant Design
+  .ant-layout {
+    align-items: center;
+  }
+
   // Ant Design Content Component
   .ant-layout-content {
     background-color: @background1;
@@ -30,15 +35,14 @@
 
 // Only make the name bolder on the Navbar instead of the blue outline
 .ant-menu.ant-menu-dark .ant-menu-item-selected {
-  background-color: transparent;
   font-weight: bolder;
   border: 1px solid @primary-color;
 }
 
 // Navbar - make font bolder on hover
 .ant-menu-dark.ant-menu-horizontal > .ant-menu-item:hover {
-  background-color: @blue-5;
-  font-weight: bolder;
+  background-color: @blue-6;
+  border: 1px solid @divider-color;
 }
 
 // Pages Container
@@ -46,10 +50,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  // padding: 24px 24px;
-  // background-color: silver;
-  // border: 1px white solid;
-  // border-radius: 0% 0% 1% 1%;
+  flex-direction: column;
+  align-items: center;
 }
 
 // Allows Ant Design Carousel to be visible
@@ -57,18 +59,8 @@
   max-width: 98vw;
 }
 
+// Contact page container
 .contact-container {
   width: 70%;
   max-width: 500px;
-}
-
-.bio-container {
-  width: 80%;
-  max-width: 500px;
-}
-
-// FooterCredits component
-.footer {
-  background-color: @background1;
-  color: white; // TODO: extract to typography
 }

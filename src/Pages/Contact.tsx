@@ -1,9 +1,6 @@
 // React Imports
 import React from "react";
 
-// Ant Design Imports
-import { Divider } from "antd";
-
 // Components
 import { AboutMe } from "../Components/AboutMe";
 import { EmailForm } from "../Components/EmailForm";
@@ -18,9 +15,8 @@ import { EmailForm } from "../Components/EmailForm";
  */
 export const Contact: React.FC<{}> = () => {
   return (
-    <div className="contact-container">
+    <div className="pages-container contact-container">
       <AboutMe />
-      <Divider />
       <EmailForm />
     </div>
   );

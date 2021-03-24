@@ -4,9 +4,7 @@
   justify-content: center;
   text-align: center;
   background-color: @background1;
-  color: white; // TODO: extract to typography
-  height: 100vh;
-  // max-width: 100vw;
+  min-height: 100vh;
   padding: 1%;
 
   // Remove padding when on a smaller screen (iPhone)
@@ -30,9 +28,16 @@
   display: flex;
 }
 
-// Only may the name bolder on the Navbar instead of the blue outline
+// Only make the name bolder on the Navbar instead of the blue outline
 .ant-menu.ant-menu-dark .ant-menu-item-selected {
   background-color: transparent;
+  font-weight: bolder;
+  border: 1px solid @primary-color;
+}
+
+// Navbar - make font bolder on hover
+.ant-menu-dark.ant-menu-horizontal > .ant-menu-item:hover {
+  background-color: @blue-5;
   font-weight: bolder;
 }
 

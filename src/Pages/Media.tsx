@@ -1,7 +1,7 @@
 // React Imports
 import React from "react";
 import { AudioPlayer } from "../Components/AudioPlayer";
-import photo from "../assets/images/3x4-gsg04.jpg";
+import photo from "../assets/images/1x1_plant.jpg";
 
 /**
  * Media Page

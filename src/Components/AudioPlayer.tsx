@@ -48,7 +48,6 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ tracks }) => {
   // Play Track if isPlaying is true
   useEffect(() => {
     if (isPlaying) {
-      console.log(audioRef);
       audioRef.current.play();
     } else {
       audioRef.current.pause();
@@ -89,9 +88,6 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ tracks }) => {
           onNextClick={toNextTrack}
           onPlayPauseClick={setIsPlaying}
         />
-        <audio controls>
-          <source src="/DayDreamer.mp3" />
-        </audio>
       </div>
     </div>
   );

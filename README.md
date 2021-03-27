@@ -18,6 +18,7 @@ https://jameseastermusic.netlify.app/
 - [Less](http://lesscss.org/)
 - [Craco](https://github.com/gsoft-inc/craco)
 - [React](https://reactjs.org/)
+- [Howler](https://howlerjs.com/)
 - [Ant Design](https://ant.design/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [React Router](https://reactrouter.com/web/guides/quick-start)

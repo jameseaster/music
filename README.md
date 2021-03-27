@@ -4,7 +4,7 @@
 
 Pictures, audio & video recordings, and a contact form for anyone who finds my music enjoyable.
 
-(www.jameseastermusic.com)[https://jameseastermusic.netlify.app/]
+[www.jameseastermusic.com](https://jameseastermusic.netlify.app/)
 
 ## Scripts
 

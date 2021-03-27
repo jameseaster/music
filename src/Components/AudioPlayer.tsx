@@ -37,7 +37,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ tracks }) => {
   const [trackProgress, setTrackProgress] = useState(0);
 
   // Constants
-  const { title, artist, color, image, audioSrc } = tracks[trackIndex];
+  const { title, artist, /* color,*/ image, audioSrc } = tracks[trackIndex];
 
   // Refs
   const audioRef = useRef(new Howl({ src: [audioSrc], autoplay: false }));
@@ -65,7 +65,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ tracks }) => {
     } else {
       audioRef.current.pause();
     }
-  }, [isPlaying]);
+  }, [isPlaying]); // eslint-disable-line
 
   // Pause song and clean up on unmount
   useEffect(() => {
@@ -101,7 +101,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ tracks }) => {
       // Set the isReady ref as true for the next pass
       isReady.current = true;
     }
-  }, [audioSrc]);
+  }, [audioSrc]); // eslint-disable-line
 
   // Handlers
   const toPrevTrack = () => {

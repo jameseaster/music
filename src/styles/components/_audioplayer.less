@@ -1,108 +1,103 @@
 // Styling for audio player (integrate later)
-* {
-  box-sizing: border-box;
-}
-
-html {
-  font-family: Arial, Helvetica, sans-serif;
-  height: 100%;
-  background: #00aeb0;
-  transition: background 0.4s ease;
-}
-
-button {
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
 .audio-player {
   max-width: 350px;
   border-radius: 20px;
   padding: 24px;
-  box-shadow: 0 28px 28px rgba(0, 0, 0, 0.2);
-  margin: auto;
-  color: white;
+  box-shadow: 0 28px 28px rgba(0, 0, 0, 0.7);
   background-color: darkslategrey;
 }
 
-.artwork {
-  border-radius: 120px;
-  display: block;
-  margin: auto;
-  height: 200px;
-  width: 200px;
+.imageWrapper {
+  .ant-image-img {
+    width: 200px;
+    height: 200px;
+    border-radius: 120px;
+  }
 }
 
-.track-info {
-  text-align: center;
-  z-index: 1;
-  position: relative;
+// .track-info {
+// }
+
+.titleWrapper {
+  h4.ant-typography {
+    color: white;
+    font-weight: 700;
+    margin: 2px 0 4px;
+  }
 }
 
-.title {
-  font-weight: 700;
-  margin-bottom: 4px;
+.artistWrapper {
+  h5.ant-typography {
+    color: white;
+    font-weight: 300;
+    margin-top: 0;
+  }
 }
 
-.artist {
-  font-weight: 300;
-  margin-top: 0;
-}
 .audio-controls {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  align-items: center;
   width: 75%;
-  margin: 0 auto 15px;
+  margin: 0 auto 5px;
 }
 
+.ant-btn-icon-only {
+  height: auto;
+  width: auto;
+}
+
+// Previous & Next
 .audio-controls .prev svg,
 .audio-controls .next svg {
-  width: 35px;
-  height: 35px;
+  color: white;
+  width: 30px;
+  height: 30px;
+  &:hover {
+    color: fade(@white, 60%);
+  }
 }
 
+// Play & Pause
 .audio-controls .play svg,
 .audio-controls .pause svg {
-  height: 40px;
   width: 40px;
-}
-
-.audio-controls path {
-  fill: white;
-}
-
-input[type="range"] {
-  height: 5px;
-  -webkit-appearance: none;
-  width: 100%;
-  margin-bottom: 10px;
-  border-radius: 8px;
-  background: #3b7677;
-  transition: background 0.2s ease;
-  cursor: pointer;
-}
-
-.color-backdrop {
-  background: linear-gradient(45deg, var(--active-color) 20%, transparent 100%)
-    no-repeat;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: -1;
-}
-
-.color-backdrop.playing {
-  animation: colorChange 20s alternate infinite;
-}
-
-@keyframes colorChange {
-  from {
-    filter: hue-rotate(0deg);
+  height: 40px;
+  color: white;
+  &:hover {
+    color: fade(@white, 60%);
   }
-  to {
-    filter: hue-rotate(360deg);
+}
+
+// Scrub Slider
+.sliderWrapper {
+  .ant-slider {
+    height: 5px;
+    margin-bottom: 10px;
+    color: rgb(119, 119, 119, 1);
+    &:hover {
+      .ant-slider-track {
+        background-color: fade(@black, 75%);
+      }
+      .ant-slider-handle:not(.ant-tooltip-open) {
+        border-color: white;
+      }
+    }
+  }
+
+  .ant-slider-handle {
+    width: 10px;
+    height: 10px;
+    margin-top: -3px;
+    background-color: white;
+    border-color: white;
+    &:focus {
+      border-color: white;
+      box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.2);
+    }
+  }
+
+  .ant-slider-track {
+    background-color: fade(@black, 55%);
   }
 }

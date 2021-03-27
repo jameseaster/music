@@ -1,6 +1,9 @@
 // React Imports
 import React from "react";
 
+// Ant Design Imports
+import { Button } from "antd";
+
 // Ant Design Icons
 import Pause from "@ant-design/icons/PauseOutlined";
 import Play from "@ant-design/icons/CaretRightOutlined";
@@ -17,51 +20,47 @@ interface AudioControlsProps {
 /**
  * AudioControls
  *
- * ...
+ * Pause, Play, Next & Prev buttons at the bottom of the audio player
  */
 export const AudioControls: React.FC<AudioControlsProps> = ({
   isPlaying,
-  onPlayPauseClick,
   onPrevClick,
   onNextClick,
+  onPlayPauseClick,
 }) => {
   return (
     <div className="audio-controls">
-      <button
-        type="button"
+      <Button
+        type="link"
         className="prev"
         aria-label="Previous"
         onClick={onPrevClick}
-      >
-        <Prev />
-      </button>
+        icon={<Prev />}
+      />
       {isPlaying ? (
-        <button
-          type="button"
+        <Button
+          type="link"
           className="pause"
           onClick={() => onPlayPauseClick(false)}
           aria-label="Pause"
-        >
-          <Pause />
-        </button>
+          icon={<Pause />}
+        />
       ) : (
-        <button
-          type="button"
+        <Button
+          type="link"
           className="play"
           onClick={() => onPlayPauseClick(true)}
           aria-label="Play"
-        >
-          <Play />
-        </button>
+          icon={<Play />}
+        />
       )}
-      <button
-        type="button"
+      <Button
+        type="link"
         className="next"
         aria-label="Next"
         onClick={onNextClick}
-      >
-        <Next />
-      </button>
+        icon={<Next />}
+      />
     </div>
   );
 };

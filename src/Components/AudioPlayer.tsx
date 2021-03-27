@@ -1,12 +1,16 @@
 // React Imports
 import React, { useState, useEffect, useRef } from "react";
 
+// Ant Design Imports
+import { Slider, Typography, Image } from "antd";
+
 // Howler Imports
 import { Howl /* Howler */ } from "howler";
 
 // Components
 import { AudioControls } from "../Components/AudioControls";
-import { Backdrop } from "../Components/Backdrop";
+
+const { Title } = Typography;
 
 interface Track {
   title: string;
@@ -150,38 +154,39 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ tracks }) => {
   return (
     <div className="audio-player">
       <div className="track-info">
-        <audio src="/assets/tracks/DayDreamer.mp3"></audio>
-        <img
-          className="artwork"
-          src={image}
-          alt={`track artwork for ${title} by ${artist}`}
-        />
-        <h2 className="title">{title}</h2>
-        <h3 className="artist">{artist}</h3>
+        <div className="imageWrapper">
+          <Image
+            src={image}
+            preview={false}
+            alt={`track artwork for ${title} by ${artist}`}
+          />
+        </div>
+        <div className="titleWrapper">
+          <Title level={4}>{title}</Title>
+        </div>
+        <div className="artistWrapper">
+          <Title level={5}>{artist}</Title>
+        </div>
         <AudioControls
           isPlaying={isPlaying}
           onPrevClick={toPrevTrack}
           onNextClick={toNextTrack}
           onPlayPauseClick={setIsPlaying}
         />
-        <input
-          type="range"
-          value={trackProgress}
-          step="1"
-          min="0"
-          max={duration ? duration : `${duration}`}
-          className="progress"
-          onChange={(e) => onScrub(Number(e.target.value))}
-          onMouseUp={onScrubEnd}
-          onKeyUp={onScrubEnd}
-          style={{ background: trackStyling }}
-        />
+        <div className="sliderWrapper">
+          <Slider
+            min={0}
+            step={1}
+            max={duration}
+            className="progress"
+            value={trackProgress}
+            tooltipVisible={false}
+            onAfterChange={onScrubEnd}
+            style={{ color: trackStyling }}
+            onChange={(n: number) => onScrub(Number(n))}
+          />
+        </div>
       </div>
-      <Backdrop
-        trackIndex={trackIndex}
-        activeColor={color}
-        isPlaying={isPlaying}
-      />
     </div>
   );
 };

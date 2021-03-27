@@ -1,13 +1,16 @@
 // React Imports
 import React, { useState, useEffect, useRef } from "react";
 
+// Howler Imports
+import { Howl /* Howler */ } from "howler";
+
 // Components
 import { AudioControls } from "../Components/AudioControls";
 
 interface Track {
   title: string;
   artist: string;
-  audioSrc: any; // | import,
+  audioSrc: string;
   image: string;
   color: string;
 }
@@ -31,13 +34,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ tracks }) => {
   const { title, artist, color, image, audioSrc } = tracks[trackIndex];
 
   // Refs
-  const audioRef = useRef(
-    new Audio(
-      "https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3"
-      // "https://drive.google.com/file/d/1trwmIhgC6jrj_34YtHyIG5g5gvezu7EP/view?usp=sharing"
-      // require("../assets/tracks/DayDreamer.mp3")
-    )
-  );
+  const audioRef = useRef(new Howl({ src: [audioSrc] }));
   const intervalRef = useRef();
   const isReady = useRef(false);
 

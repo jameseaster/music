@@ -1,7 +1,11 @@
 // React Imports
 import React from "react";
+
+// Components
 import { AudioPlayer } from "../Components/AudioPlayer";
-import photo from "../assets/images/1x1_plant.jpg";
+
+// Tracks
+import { tracks } from "../assets/tracks";
 
 /**
  * Media Page
@@ -10,19 +14,8 @@ import photo from "../assets/images/1x1_plant.jpg";
  * audio recordings, and pdf transcriptions
  */
 export const Media: React.FC<{}> = () => {
-  const tracks = [
-    {
-      title: "First Song",
-      artist: "James Easter",
-      audioSrc: "../assets/tracks/DayDreamer.mp3",
-      image: photo,
-      color: "dodgerblue",
-    },
-  ];
-
   return (
     <div className="pages-container">
-      <h2>Media</h2>
       <AudioPlayer tracks={tracks} />
     </div>
   );

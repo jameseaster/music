@@ -1,6 +1,7 @@
 // React Imports
 import React from "react";
-
+import emailjs from "emailjs-com";
+import axios from "axios";
 import { Form, Input, Button } from "antd";
 
 /* eslint-disable no-template-curly-in-string */
@@ -8,10 +9,6 @@ const validateMessages = {
   required: "${label} is required!",
   types: {
     email: "${label} is not a valid email!",
-    number: "${label} is not a valid number!",
-  },
-  number: {
-    range: "${label} must be between ${min} and ${max}",
   },
 };
 /* eslint-enable no-template-curly-in-string */
@@ -23,8 +20,28 @@ const validateMessages = {
  * once the users submits the message
  */
 export const EmailForm: React.FC<{}> = () => {
-  // Log the contact form on submit
-  const onFinish = (values: object) => console.log(values);
+  // TODO: loading variable
+  // TODO: add CAPTCHA support
+  // TODO: add auto reply
+  // TODO: confirmation of email sent
+  // TODO: clear form
+
+  const onFinish = (values: any) => {
+    const templateParams = {
+      from_name: values.name,
+      reply_to: values.email,
+      message: values.message,
+    };
+
+    axios("/.netlify/functions/sendEmail").then((res: any) => {
+      const { service_id, template_id, user_id } = res.data;
+
+      emailjs
+        .send(service_id, template_id, templateParams, user_id)
+        .then((result) => console.log(result.status))
+        .catch((error) => console.log(error));
+    });
+  };
 
   return (
     <Form
@@ -34,21 +51,13 @@ export const EmailForm: React.FC<{}> = () => {
       validateMessages={validateMessages}
       style={{ width: "100%" }}
     >
-      <Form.Item
-        name={["user", "name"]}
-        label="Name"
-        rules={[{ required: true }]}
-      >
+      <Form.Item name={["name"]} label="Name" rules={[{ required: true }]}>
         <Input />
       </Form.Item>
-      <Form.Item
-        name={["user", "email"]}
-        label="Email"
-        rules={[{ type: "email" }]}
-      >
+      <Form.Item name={["email"]} label="Email" rules={[{ type: "email" }]}>
         <Input />
       </Form.Item>
-      <Form.Item name={["user", "message"]} label="Message">
+      <Form.Item name={["message"]} label="Message">
         <Input.TextArea
           maxLength={250}
           showCount

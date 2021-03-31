@@ -1,5 +1,7 @@
 # James Easter Music
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/55a1b6c0-24db-44e6-b292-302eff186f09/deploy-status)](https://app.netlify.com/sites/jameseastermusic/deploys)
+
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-brightgreen.svg)](https://github.com/prettier/prettier)
 
 Pictures, audio & video recordings, and a contact form for anyone who finds my music enjoyable.

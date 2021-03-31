@@ -1,6 +1,6 @@
-<div align="center">
+<div align="center" >
   <br>
-  <h2>James Easter Music</h2>
+  <h1 style="border-bottom:none;margin-bottom:0;">James Easter Music</h1>
 <a href="https://jameseastermusic.netlify.app"><strong>www.jameseastermusic.com</a>
 
 ---

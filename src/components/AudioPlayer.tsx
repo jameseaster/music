@@ -69,11 +69,9 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ tracks }) => {
 
   // Pause song and clean up on unmount
   useEffect(() => {
-    let { current: song } = audioRef;
-    let { current: interval } = intervalRef;
     return () => {
-      song.pause();
-      clearInterval(interval);
+      audioRef.current.pause();
+      clearInterval(intervalRef.current);
     };
   }, []);
 

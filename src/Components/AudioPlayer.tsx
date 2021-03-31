@@ -8,7 +8,7 @@ import { Slider, Typography, Image } from "antd";
 import { Howl /* Howler */ } from "howler";
 
 // Components
-import { AudioControls } from "../Components/AudioControls";
+import { AudioControls } from "../components/AudioControls";
 
 const { Title } = Typography;
 

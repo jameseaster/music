@@ -8,10 +8,10 @@ import { Image, Row, Col } from "antd";
 import gsg01 from "../assets/3x2-gsg01.jpg";
 import gsg04 from "../assets/3x4-gsg04.jpg";
 import gsg06 from "../assets/3x2-gsg06.jpg";
-import ochancey01 from "../assets/3x4-ochancey01.png";
+import ochancey01 from "../assets/3x4-ochancey01.jpg";
 import ochancey04 from "../assets/3x4-ochancey04.jpg";
 import ochancey05 from "../assets/3x4-ochancey05.jpg";
-import ochancey06 from "../assets/3x4-ochancey06.jpeg";
+import ochancey06 from "../assets/3x4-ochancey06.jpg";
 
 /**
  * ImageGroup

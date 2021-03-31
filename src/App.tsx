@@ -9,9 +9,9 @@ import "./styles/app.less";
 import { Layout } from "antd";
 
 // Components
-import { Pages } from "./Pages";
-import { Navbar } from "./Components/Navbar";
-import { FooterCredits } from "./Components/FooterCredits";
+import { Pages } from "./pages";
+import { Navbar } from "./components/Navbar";
+import { FooterCredits } from "./components/FooterCredits";
 
 /**
  * App

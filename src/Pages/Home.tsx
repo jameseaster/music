@@ -2,7 +2,7 @@
 import React from "react";
 
 // Components
-import { ImageGroup } from "../Components/ImageGroup";
+import { ImageGroup } from "../components/ImageGroup";
 
 /**
  * Home Page

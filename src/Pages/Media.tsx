@@ -2,7 +2,7 @@
 import React from "react";
 
 // Components
-import { AudioPlayer } from "../Components/AudioPlayer";
+import { AudioPlayer } from "../components/AudioPlayer";
 
 // Tracks
 import { tracks } from "../assets/tracks";

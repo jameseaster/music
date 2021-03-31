@@ -2,8 +2,8 @@
 import React from "react";
 
 // Components
-import { AboutMe } from "../Components/AboutMe";
-import { EmailForm } from "../Components/EmailForm";
+import { AboutMe } from "../components/AboutMe";
+import { EmailForm } from "../components/EmailForm";
 
 /**
  * Contact Page

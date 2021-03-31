@@ -21,10 +21,10 @@ const validateMessages = {
  * once the users submits the message
  */
 export const EmailForm: React.FC<{}> = () => {
-  // TODO: add CAPTCHA support
-  // TODO: add auto reply
-  const [form] = Form.useForm();
+  // Local State
   const [loading, setLoading] = useState(false);
+  // Hooks
+  const [form] = Form.useForm();
 
   // Handle form submition
   const onFinish = (values: any) => {

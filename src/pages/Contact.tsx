@@ -15,9 +15,11 @@ import { EmailForm } from "../components/EmailForm";
  */
 export const Contact: React.FC<{}> = () => {
   return (
-    <div className="pages-container contact-container">
-      <AboutMe />
-      <EmailForm />
+    <div className="pages-container">
+      <div className="contact-container">
+        <AboutMe />
+        <EmailForm />
+      </div>
     </div>
   );
 };

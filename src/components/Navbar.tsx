@@ -16,23 +16,28 @@ const { Header } = Layout;
  * at the top of the webpage and utilizes react-router-dom to
  * navigate between Pages
  */
-export const Navbar: React.FC<{}> = () => (
-  <Header className="header">
-    <Menu
-      className="header-menu"
-      theme="dark"
-      mode="horizontal"
-      defaultSelectedKeys={["Home"]}
-    >
-      <Menu.Item key="Home" style={{ width: "15%", minWidth: "100px" }}>
-        <Link to="/">Home</Link>
-      </Menu.Item>
-      <Menu.Item key="Media" style={{ width: "15%", minWidth: "100px" }}>
-        <Link to="/media">Media</Link>
-      </Menu.Item>
-      <Menu.Item key="Contact" style={{ width: "15%", minWidth: "148px" }}>
-        <Link to="/contact">About / Contact</Link>
-      </Menu.Item>
-    </Menu>
-  </Header>
-);
+export const Navbar: React.FC<{}> = () => {
+  const menuItemStyle = { width: "15%", minWidth: "100px", margin: "8px" };
+  return (
+    <Header className="header">
+      <Menu
+        className="header-menu"
+        theme="dark"
+        mode="horizontal"
+        defaultSelectedKeys={["Home"]}
+      >
+        <Menu.Item key="Home" style={menuItemStyle}>
+          <Link className="nav-link" to="/">
+            Home
+          </Link>
+        </Menu.Item>
+        <Menu.Item key="Media" style={menuItemStyle}>
+          <Link to="/media">Media</Link>
+        </Menu.Item>
+        <Menu.Item key="Contact" style={menuItemStyle}>
+          <Link to="/contact">Contact</Link>
+        </Menu.Item>
+      </Menu>
+    </Header>
+  );
+};

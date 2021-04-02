@@ -1,8 +1,5 @@
 // Entire app container
 .app-container {
-  // display: flex;
-  // justify-content: center;
-  // text-align: center;
   background-color: @background1;
   min-height: 100vh;
   padding: 1%;
@@ -20,9 +17,6 @@
   // Ant Design Content Component
   .ant-layout-content {
     background-color: @background1;
-    // display: flex;
-    // justify-content: center;
-    // align-items: flex-start;
     margin-top: 16px;
     width: 100%;
   }
@@ -55,19 +49,44 @@
   flex-direction: column;
   align-items: center;
 }
+
+// Home page container
+.home-container {
+  display: flex;
+  max-width: 900px;
+  text-align: center;
+  align-items: center;
+  flex-direction: column;
+
+  .ant-space {
+    display: flex;
+    justify-content: center;
+  }
+}
+
 // Media page container
 .media-container {
-  text-align: center;
   display: flex;
-  flex-direction: column;
+  text-align: center;
   align-items: center;
+  flex-direction: column;
+
+  .ant-space {
+    display: flex;
+    justify-content: center;
+  }
 }
 
 // Contact page container
 .contact-container {
   text-align: center;
   width: 70%;
-  max-width: 500px;
+  max-width: 450px;
+  min-height: 74vh; // moves footer down w/out adding scroll bar
+
+  .about-me {
+    margin-bottom: 45px;
+  }
 }
 
 // Allows Ant Design Carousel to be visible

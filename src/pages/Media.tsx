@@ -1,6 +1,9 @@
 // React Imports
 import React, { useState } from "react";
 
+// Ant Design Imports
+import { Space } from "antd";
+
 // Components
 import { List } from "../components/List";
 import { AudioPlayer } from "../components/AudioPlayer";
@@ -48,23 +51,32 @@ export const Media: React.FC<{}> = () => {
   return (
     <div className="pages-container">
       <div className="media-container">
-        <AudioPlayer
-          tracks={tracks}
-          trackIndex={trackIndex}
-          toPrevTrack={toPrevTrack}
-          toNextTrack={toNextTrack}
-        />
-        <List
-          list={tracks}
-          selectedIndex={trackIndex}
-          handleSelect={handleAudioSelect}
-        />
-        <ResponsivePlayer videos={videos} videoIndex={videoIndex} />
-        <List
-          list={videos}
-          selectedIndex={videoIndex}
-          handleSelect={handleVideoSelect}
-        />
+        <div style={{ marginBottom: "40px" }}>
+          <Space wrap size={[0, 40]}>
+            <AudioPlayer
+              tracks={tracks}
+              trackIndex={trackIndex}
+              toPrevTrack={toPrevTrack}
+              toNextTrack={toNextTrack}
+            />
+            <List
+              list={tracks}
+              selectedIndex={trackIndex}
+              handleSelect={handleAudioSelect}
+            />
+          </Space>
+        </div>
+        <div style={{ marginBottom: "40px" }}>
+          <Space wrap size={[0, 40]}>
+            <List
+              list={videos}
+              responsiveHeight={true}
+              selectedIndex={videoIndex}
+              handleSelect={handleVideoSelect}
+            />
+            <ResponsivePlayer videos={videos} videoIndex={videoIndex} />
+          </Space>
+        </div>
       </div>
     </div>
   );

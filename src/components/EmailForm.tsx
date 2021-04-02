@@ -89,7 +89,7 @@ export const EmailForm: React.FC<{}> = () => {
           showCount
           placeholder="Enter message here"
           allowClear
-          autoSize={{ minRows: 4, maxRows: 4 }}
+          autoSize={{ minRows: 6, maxRows: 6 }}
         />
       </Form.Item>
       <Form.Item>

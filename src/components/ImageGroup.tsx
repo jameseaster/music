@@ -2,7 +2,7 @@
 import React from "react";
 
 // Ant Design Imports
-import { Image, Row, Col } from "antd";
+import { Image, Space } from "antd";
 
 // Images
 import gsg01 from "../assets/images/3x2-gsg01.jpg";
@@ -20,30 +20,16 @@ import ochancey06 from "../assets/images/3x4-ochancey06.jpg";
  */
 export const ImageGroup: React.FC<{}> = () => (
   <Image.PreviewGroup>
-    <Row justify="center" style={{ marginBottom: "-6px", width: "100%" }}>
-      <Col xs={24} lg={6}>
-        <Image width={"230px"} src={gsg04} />
-      </Col>
-
-      <Col xs={24} lg={6}>
-        <Image width={"230px"} src={ochancey01} />
-      </Col>
-
-      <Col xs={24} lg={6}>
-        <Image width={"230px"} src={ochancey06} />
-      </Col>
-    </Row>
-    <Row justify="center">
-      <Col xs={24} lg={6}>
-        <Image width={"230px"} src={ochancey04} />
-      </Col>
-      <Col xs={24} sm={6}>
-        <Image width={"230px"} src={gsg01} />
-        <Image style={{ marginTop: "-6px" }} width={"230px"} src={gsg06} />
-      </Col>
-      <Col xs={24} lg={6}>
-        <Image width={"230px"} src={ochancey05} />
-      </Col>
-    </Row>
+    <Space size={[6, 0]} wrap>
+      <Image className="single-image" width={"260px"} src={gsg04} />
+      <Image className="single-image" width={"260px"} src={ochancey01} />
+      <Image className="single-image" width={"260px"} src={ochancey06} />
+      <Image className="single-image" width={"260px"} src={ochancey04} />
+      <Space size={-6} direction="vertical">
+        <Image width={"260px"} src={gsg01} />
+        <Image width={"260px"} src={gsg06} />
+      </Space>
+      <Image className="single-image" width={"260px"} src={ochancey05} />
+    </Space>
   </Image.PreviewGroup>
 );

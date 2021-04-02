@@ -1,5 +1,5 @@
 // Audio track images
-import photo from "../assets/1x1_plant.jpg";
+import photo from "./images/1x1_plant.jpg";
 
 // List of tracks that are passed to audio player
 export const tracks = [

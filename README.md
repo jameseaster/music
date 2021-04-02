@@ -1,12 +1,10 @@
 <div align="center" >
   <br>
-  <h1 style="border-bottom:none;margin-bottom:0;">James Easter Music</h1>
-<a href="https://jameseastermusic.netlify.app"><strong>www.jameseastermusic.com</a>
-
----
-
+  <h1>James Easter Music</h1>
 </div>
+
 <br>
+
 <p align="center">
    <a href="https://app.netlify.com/sites/jameseastermusic/deploys">
     <img src="https://api.netlify.com/api/v1/badges/55a1b6c0-24db-44e6-b292-302eff186f09/deploy-status" alt="Netlify Status">
@@ -16,6 +14,9 @@
   <img src="https://img.shields.io/badge/code_style-prettier-brightgreen.svg?style=plastic" alt="Code style prettier">
 </p>
 
+<div align="center" >
+<a href="https://jameseastermusic.netlify.app"><strong>www.jameseastermusic.com</a>
+</div>
 <br>
 
 James Easter Music is the home for my pictures, audio & video recordings, and a contact form for anyone who finds my music enjoyable. I studied classical and jazz guitar and I'm always excited to play gigs and share what I'm working on.
@@ -24,7 +25,7 @@ James Easter Music is the home for my pictures, audio & video recordings, and a 
 
 ## Scripts
 
-- `yarn start`: starts app with craco, open [http://localhost:3000](http://localhost:3000)
+- `yarn start`: starts app with craco, open on localhost:3000
 - `yarn build`: Builds the production app with craco
 - `yarn test`: Runs the tests with craco
 - `yarn eject`: Ejects the app

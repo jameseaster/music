@@ -3,7 +3,7 @@ import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 
 // Style Imports
-import "./styles/app.less";
+import "./styles/_app.less";
 
 // Ant Design Imports
 import { Layout } from "antd";

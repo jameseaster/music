@@ -12,17 +12,20 @@ import { AudioControls } from "../components/AudioControls";
 
 const { Title } = Typography;
 
-interface Track {
+type Track = {
   title: string;
   artist: string;
   audioSrc: string;
   image: string;
   color: string;
-}
+};
 
-interface AudioPlayerProps {
+type AudioPlayerProps = {
   tracks: Track[];
-}
+  trackIndex: number;
+  toPrevTrack: () => void;
+  toNextTrack: () => void;
+};
 
 /**
  * AudioPlayer
@@ -30,9 +33,13 @@ interface AudioPlayerProps {
  * A media player that takes in a list of tracks and offers the ability to
  * play, pause, go to next, and go to previous.
  */
-export const AudioPlayer: React.FC<AudioPlayerProps> = ({ tracks }) => {
+export const AudioPlayer: React.FC<AudioPlayerProps> = ({
+  tracks,
+  trackIndex,
+  toPrevTrack,
+  toNextTrack,
+}) => {
   // State
-  const [trackIndex, setTrackIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [trackProgress, setTrackProgress] = useState(0);
 
@@ -100,23 +107,6 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ tracks }) => {
       isReady.current = true;
     }
   }, [audioSrc]); // eslint-disable-line
-
-  // Handlers
-  const toPrevTrack = () => {
-    if (trackIndex - 1 < 0) {
-      setTrackIndex(tracks.length - 1);
-    } else {
-      setTrackIndex(trackIndex - 1);
-    }
-  };
-
-  const toNextTrack = () => {
-    if (trackIndex < tracks.length - 1) {
-      setTrackIndex(trackIndex + 1);
-    } else {
-      setTrackIndex(0);
-    }
-  };
 
   const startTimer = () => {
     // Clear any timers already running

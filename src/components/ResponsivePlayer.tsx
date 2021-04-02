@@ -1,44 +1,63 @@
 // React Imports
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useCurrentBreakpoint } from "../hooks";
 
 // Dependency Imports
 import ReactPlayer from "react-player";
+type Video = {
+  title: string;
+  url: string;
+  pdf: any;
+};
+
+type VideoPlayerProps = {
+  videos: Video[];
+  videoIndex?: number;
+  toNextVideo?: () => void;
+};
 
 /**
  * ResponsivePlayer
  *
  * TODO: add details here
  */
-export const ResponsivePlayer: React.FC<{}> = () => {
-  const live = [
-    "https://www.youtube.com/watch?v=mkLl_BpGbeU",
-    "https://www.youtube.com/watch?v=-28qjhW5Wzw",
-    "https://www.youtube.com/watch?v=ymHZx1rr9Bg",
-    "https://www.youtube.com/watch?v=Ka9EV91Yku8",
-  ];
+export const ResponsivePlayer: React.FC<VideoPlayerProps> = ({
+  videos,
+  videoIndex,
+}) => {
+  const [currentVideo, setCurrentVideo] = useState<string>(
+    videos[Number(videoIndex)].url
+  );
+  const { breakpoint } = useCurrentBreakpoint();
 
-  const transcriptions = [
-    "https://www.youtube.com/watch?v=eZyFPcJjOkA",
-    "https://www.youtube.com/watch?v=z3FH5_C_pzo",
-    "https://www.youtube.com/watch?v=nCrCLeIJzm8",
-    "https://www.youtube.com/watch?v=Bq5qf50d-cI",
-    "https://www.youtube.com/watch?v=gIe8VBxFGOM",
-    "https://www.youtube.com/watch?v=lYYy3sZMRwQ",
-    "https://www.youtube.com/watch?v=lGysbDsvNOU",
-    "https://www.youtube.com/watch?v=rW97jsCq9A8",
-    "https://www.youtube.com/watch?v=uBfEOiovs9g",
-    "https://www.youtube.com/watch?v=7Dy6AteuOHE",
-  ];
+  // Widths for divider at the top of the Pages
+  type Dimensions = {
+    [key: string]: {
+      height: string;
+      width: string;
+    };
+  };
+  const dimensions: Dimensions = {
+    xs: { width: "400px", height: "225px" },
+    sm: { width: "500px", height: "281px" },
+    md: { width: "600px", height: "338px" },
+    lg: { width: "700px", height: "394px" },
+    xl: { width: "800px", height: "450px" },
+    xxl: { width: "900px", height: "506px" },
+  };
+
+  useEffect(() => {
+    setCurrentVideo(videos[Number(videoIndex)].url);
+  }, [videoIndex, videos]);
+
   return (
-    <div className="player-wrapper">
-      <ReactPlayer
-        controls
-        width="100%"
-        height="100%"
-        stopOnUnmount
-        className="react-player"
-        url={[...live, ...transcriptions]}
-      />
-    </div>
+    <ReactPlayer
+      controls
+      width={dimensions[breakpoint]?.width || "100%"}
+      height={dimensions[breakpoint]?.height || "100%"}
+      stopOnUnmount
+      className="react-player"
+      url={currentVideo}
+    />
   );
 };

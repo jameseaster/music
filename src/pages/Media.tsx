@@ -6,6 +6,7 @@ import { AudioPlayer } from "../components/AudioPlayer";
 
 // Tracks
 import { tracks } from "../assets/tracks";
+import { ResponsivePlayer } from "../components/ResponsivePlayer";
 
 /**
  * Media Page
@@ -17,6 +18,7 @@ export const Media: React.FC<{}> = () => {
   return (
     <div className="pages-container">
       <AudioPlayer tracks={tracks} />
+      <ResponsivePlayer />
     </div>
   );
 };

@@ -1,10 +1,54 @@
 // Styling for audio player (integrate later)
-.audio-player {
-  max-width: 350px;
+.audio-player-container {
+  display: flex;
   border-radius: 20px;
   padding: 24px;
   box-shadow: 0 28px 28px rgba(0, 0, 0, 0.7);
   background-color: darkslategrey;
+  margin-bottom: 75px;
+  flex-direction: row;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.playlist-icon-container {
+  display: flex;
+  flex-direction: row-reverse;
+  margin: -10px -12px 0 0;
+}
+
+.icon {
+  -webkit-transition: transform 0.5s ease;
+  -moz-transition: transform 0.5s ease;
+  -ms-transition: transform 0.5s ease;
+  -o-transition: transform 0.5s ease;
+  transition: transform 0.5s ease;
+}
+
+.icon-open {
+  -webkit-transform: rotate(-180deg);
+  -moz-transform: rotate(-180deg);
+  -ms-transform: rotate(-180deg);
+  -o-transform: rotate(-180deg);
+  transform: rotate(-180deg);
+}
+
+.condensed {
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+
+.condensed-open {
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  transform: rotate(-90deg);
 }
 
 .imageWrapper {
@@ -15,8 +59,13 @@
   }
 }
 
-// .track-info {
-// }
+.audio-playlist {
+  display: flex;
+  margin: 0 0 0 40px;
+}
+.margin-top {
+  margin: 40px 0 0 0;
+}
 
 .titleWrapper {
   h4.ant-typography {

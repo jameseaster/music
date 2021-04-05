@@ -64,7 +64,7 @@ export const List: React.FC<ListProps> = ({
     <Menu
       className={className}
       style={{
-        minWidth: 256,
+        minWidth: 200,
         borderRadius: 8,
         overflowX: "hidden",
         padding: noPadding ? 0 : 10,

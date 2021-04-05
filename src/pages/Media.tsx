@@ -6,7 +6,7 @@ import { Space, Button } from "antd";
 
 // Components
 import { AudioPlayer } from "../components/AudioPlayer";
-import { ResponsivePlayer } from "../components/ResponsivePlayer";
+import { VideoPlayer } from "../components/VideoPlayer";
 
 // Tracks
 import { tracks } from "../assets/tracks";
@@ -99,7 +99,7 @@ export const Media: React.FC<{}> = () => {
             handleSelect={handleAudioSelect}
           />
         ) : (
-          <ResponsivePlayer
+          <VideoPlayer
             className="video-player fade-in"
             videos={videos}
             playing={videoAutoPlay}

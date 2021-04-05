@@ -15,7 +15,7 @@ import { ImageGroup } from "../components/ImageGroup";
 export const Home: React.FC<{}> = () => {
   return (
     <div className="pages-container">
-      <div className="home-container">
+      <div className="home-container fade-in">
         <ImageGroup />
       </div>
     </div>

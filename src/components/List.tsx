@@ -8,25 +8,28 @@ import { MenuClickEventHandler } from "rc-menu/lib/interface";
 // Hooks
 import { useCurrentBreakpoint } from "../hooks";
 
+// Types
 type Track = {
   title: string;
-  artist: string;
-  audioSrc: string;
   image: string;
   color: string;
+  artist: string;
+  audioSrc: string;
 };
 type Video = {
-  title: string;
-  url: string;
   pdf: any;
+  url: string;
+  title: string;
 };
 
 type ListProps = {
-  list: Track[] | Video[];
-  selectedIndex?: number;
-  handleSelect: MenuClickEventHandler;
   height?: number;
+  className?: string;
+  noPadding?: boolean;
+  selectedIndex?: number;
+  list: Track[] | Video[];
   responsiveHeight?: boolean;
+  handleSelect: MenuClickEventHandler;
 };
 /**
  * List
@@ -35,9 +38,11 @@ type ListProps = {
  */
 export const List: React.FC<ListProps> = ({
   list,
+  className,
   handleSelect,
   height = 400,
   selectedIndex,
+  noPadding = false,
   responsiveHeight = false,
 }) => {
   const { breakpoint } = useCurrentBreakpoint();
@@ -57,13 +62,14 @@ export const List: React.FC<ListProps> = ({
 
   return (
     <Menu
+      className={className}
       style={{
         minWidth: 256,
-        padding: 10,
         borderRadius: 8,
+        overflowX: "hidden",
+        padding: noPadding ? 0 : 10,
         height: responsiveHeight ? heightValues[breakpoint] : height,
       }}
-      mode="inline"
       onSelect={handleSelect}
       defaultSelectedKeys={["0"]}
       selectedKeys={[String(selectedIndex)]}

@@ -1,9 +1,24 @@
 // React Imports
 import React, { useState, useEffect } from "react";
-import { useCurrentBreakpoint } from "../hooks";
 
 // Dependency Imports
 import ReactPlayer from "react-player";
+
+// Ant Design
+import { Card } from "antd";
+
+// Ant Design Icons
+import { UpOutlined, DownOutlined } from "@ant-design/icons";
+
+// Components
+import { List } from "../components/List";
+
+// Hooks
+import { useCurrentBreakpoint } from "../hooks";
+
+// Types
+import { MenuClickEventHandler } from "rc-menu/lib/interface";
+
 type Video = {
   title: string;
   url: string;
@@ -12,8 +27,13 @@ type Video = {
 
 type VideoPlayerProps = {
   videos: Video[];
-  videoIndex?: number;
+  height?: number;
+  playing: boolean;
+  className: string;
+  videoIndex: number;
+  selectedIndex: number;
   toNextVideo?: () => void;
+  handleSelect: MenuClickEventHandler;
 };
 
 /**
@@ -23,8 +43,13 @@ type VideoPlayerProps = {
  */
 export const ResponsivePlayer: React.FC<VideoPlayerProps> = ({
   videos,
+  playing,
+  className,
   videoIndex,
+  handleSelect,
+  selectedIndex,
 }) => {
+  const [showPlaylist, setShowPlaylist] = useState(true);
   const [currentVideo, setCurrentVideo] = useState<string>(
     videos[Number(videoIndex)].url
   );
@@ -46,18 +71,52 @@ export const ResponsivePlayer: React.FC<VideoPlayerProps> = ({
     xxl: { width: "900px", height: "506px" },
   };
 
+  const togglePlaylist = () => setShowPlaylist(!showPlaylist);
+
   useEffect(() => {
     setCurrentVideo(videos[Number(videoIndex)].url);
   }, [videoIndex, videos]);
 
   return (
-    <ReactPlayer
-      controls
-      width={dimensions[breakpoint]?.width || "100%"}
-      height={dimensions[breakpoint]?.height || "100%"}
-      stopOnUnmount
-      className="react-player"
-      url={currentVideo}
-    />
+    <Card
+      className={className}
+      style={{ borderRadius: "8px" }}
+      actions={[
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href={videos[videoIndex].pdf}
+        >
+          download pdf
+        </a>,
+        <>
+          {showPlaylist ? (
+            <UpOutlined onClick={togglePlaylist} /> // TODO: change this to rotate via CSS
+          ) : (
+            <DownOutlined onClick={togglePlaylist} />
+          )}
+        </>,
+      ]}
+    >
+      <ReactPlayer
+        controls
+        stopOnUnmount
+        playing={playing}
+        url={currentVideo}
+        className="react-player"
+        width={dimensions[breakpoint]?.width || "100%"}
+        height={dimensions[breakpoint]?.height || "100%"}
+      />
+      {showPlaylist && (
+        <List
+          noPadding
+          height={150}
+          list={videos}
+          handleSelect={handleSelect}
+          selectedIndex={selectedIndex}
+          className="responsive-player-list"
+        />
+      )}
+    </Card>
   );
 };

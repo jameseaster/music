@@ -2,10 +2,9 @@
 import React, { useState } from "react";
 
 // Ant Design Imports
-import { Space } from "antd";
+import { Space, Button } from "antd";
 
 // Components
-import { List } from "../components/List";
 import { AudioPlayer } from "../components/AudioPlayer";
 import { ResponsivePlayer } from "../components/ResponsivePlayer";
 
@@ -25,6 +24,9 @@ import { MenuClickEventHandler } from "rc-menu/lib/interface";
 export const Media: React.FC<{}> = () => {
   const [trackIndex, setTrackIndex] = useState(0);
   const [videoIndex, setVideoIndex] = useState(0);
+  // Changes between audio and video players
+  const [toggleMedia, setToggleMedia] = useState(true);
+  const [videoAutoPlay, setVideoAutoPlay] = useState(false);
 
   // Handlers
   const toPrevTrack = () => {
@@ -46,37 +48,66 @@ export const Media: React.FC<{}> = () => {
 
   const handleVideoSelect: MenuClickEventHandler = ({ key }) => {
     setVideoIndex(Number(key));
+    setVideoAutoPlay(true);
   };
 
   return (
     <div className="pages-container">
       <div className="media-container">
-        <div style={{ marginBottom: "40px" }}>
-          <Space wrap size={[0, 40]}>
-            <AudioPlayer
-              tracks={tracks}
-              trackIndex={trackIndex}
-              toPrevTrack={toPrevTrack}
-              toNextTrack={toNextTrack}
-            />
-            <List
-              list={tracks}
-              selectedIndex={trackIndex}
-              handleSelect={handleAudioSelect}
-            />
+        <div className="button-container">
+          {/* TODO: This causes a spacing issue when playlist and player stack */}
+          <Space size={30}>
+            <Button
+              type="text"
+              style={{
+                // TODO: remove active css
+                border: toggleMedia
+                  ? " 1px solid rgba(255, 255, 255, 0.85)"
+                  : "none",
+                marginBottom: "20px",
+              }}
+              onClick={() => {
+                setToggleMedia(true);
+                setVideoAutoPlay(false);
+              }}
+            >
+              Audio
+            </Button>
+            <Button
+              type="text"
+              style={{
+                border: toggleMedia
+                  ? "none"
+                  : " 1px solid rgba(255, 255, 255, 0.85)",
+                marginBottom: "20px",
+              }}
+              onClick={() => {
+                setToggleMedia(false);
+                setVideoAutoPlay(false);
+              }}
+            >
+              Video
+            </Button>
           </Space>
         </div>
-        <div style={{ marginBottom: "40px" }}>
-          <Space wrap size={[0, 40]}>
-            <List
-              list={videos}
-              responsiveHeight={true}
-              selectedIndex={videoIndex}
-              handleSelect={handleVideoSelect}
-            />
-            <ResponsivePlayer videos={videos} videoIndex={videoIndex} />
-          </Space>
-        </div>
+        {toggleMedia ? (
+          <AudioPlayer
+            tracks={tracks}
+            trackIndex={trackIndex}
+            toPrevTrack={toPrevTrack}
+            toNextTrack={toNextTrack}
+            handleSelect={handleAudioSelect}
+          />
+        ) : (
+          <ResponsivePlayer
+            className="video-player fade-in"
+            videos={videos}
+            playing={videoAutoPlay}
+            videoIndex={videoIndex}
+            selectedIndex={videoIndex}
+            handleSelect={handleVideoSelect}
+          />
+        )}
       </div>
     </div>
   );

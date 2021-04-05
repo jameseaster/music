@@ -2,22 +2,24 @@
 import React, { useState, useEffect, useRef } from "react";
 
 // Ant Design Imports
-import { Slider, Typography, Image } from "antd";
+import { Slider, Typography, Image, Space } from "antd";
 
 // Howler Imports
 import { Howl /* Howler */ } from "howler";
 
 // Components
+import { List } from "../components/List";
 import { AudioControls } from "../components/AudioControls";
 
-const { Title } = Typography;
+// Types
+import { MenuClickEventHandler } from "rc-menu/lib/interface";
 
 type Track = {
   title: string;
-  artist: string;
-  audioSrc: string;
   image: string;
   color: string;
+  artist: string;
+  audioSrc: string;
 };
 
 type AudioPlayerProps = {
@@ -25,7 +27,11 @@ type AudioPlayerProps = {
   trackIndex: number;
   toPrevTrack: () => void;
   toNextTrack: () => void;
+  handleSelect: MenuClickEventHandler;
 };
+
+// Constants
+const { Title } = Typography;
 
 /**
  * AudioPlayer
@@ -38,6 +44,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
   trackIndex,
   toPrevTrack,
   toNextTrack,
+  handleSelect,
 }) => {
   // State
   const [isPlaying, setIsPlaying] = useState(false);
@@ -140,41 +147,56 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
   };
 
   return (
-    <div className="audio-player">
-      <div className="track-info">
-        <div className="imageWrapper">
-          <Image
-            src={image}
-            preview={false}
-            alt={`track artwork for ${title} by ${artist}`}
+    <Space
+      wrap
+      size={40}
+      className="audio-container fade-in"
+      style={{ minHeight: "70vh" }}
+    >
+      <div className="audio-player">
+        <div className="track-info">
+          <div className="imageWrapper">
+            <Image
+              src={image}
+              preview={false}
+              alt={`track artwork for ${title} by ${artist}`}
+            />
+          </div>
+          <div className="titleWrapper">
+            <Title level={4}>{title}</Title>
+          </div>
+          <div className="artistWrapper">
+            <Title level={5}>{artist}</Title>
+          </div>
+          <AudioControls
+            isPlaying={isPlaying}
+            onPrevClick={toPrevTrack}
+            onNextClick={toNextTrack}
+            onPlayPauseClick={setIsPlaying}
           />
-        </div>
-        <div className="titleWrapper">
-          <Title level={4}>{title}</Title>
-        </div>
-        <div className="artistWrapper">
-          <Title level={5}>{artist}</Title>
-        </div>
-        <AudioControls
-          isPlaying={isPlaying}
-          onPrevClick={toPrevTrack}
-          onNextClick={toNextTrack}
-          onPlayPauseClick={setIsPlaying}
-        />
-        <div className="sliderWrapper">
-          <Slider
-            min={0}
-            step={1}
-            max={duration}
-            className="progress"
-            value={trackProgress}
-            tooltipVisible={false}
-            onAfterChange={onScrubEnd}
-            style={{ color: trackStyling }}
-            onChange={(n: number) => onScrub(Number(n))}
-          />
+          <div className="sliderWrapper">
+            <Slider
+              min={0}
+              step={1}
+              max={duration}
+              className="progress"
+              value={trackProgress}
+              tooltipVisible={false}
+              onAfterChange={onScrubEnd}
+              style={{ color: trackStyling }}
+              onChange={(n: number) => onScrub(Number(n))}
+            />
+          </div>
         </div>
       </div>
-    </div>
+
+      <div className="audio-playlist">
+        <List
+          list={tracks}
+          selectedIndex={trackIndex}
+          handleSelect={handleSelect}
+        />
+      </div>
+    </Space>
   );
 };

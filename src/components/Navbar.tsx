@@ -19,11 +19,11 @@ const { Header } = Layout;
 export const Navbar: React.FC<{}> = () => {
   const menuItemStyle = { width: "15%", minWidth: "100px", margin: "8px" };
   return (
-    <Header className="header">
+    <Header className="header fade-in">
       <Menu
-        className="header-menu"
         theme="dark"
         mode="horizontal"
+        className="header-menu"
         defaultSelectedKeys={["Home"]}
       >
         <Menu.Item key="Home" style={menuItemStyle}>

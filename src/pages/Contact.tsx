@@ -16,7 +16,7 @@ import { EmailForm } from "../components/EmailForm";
 export const Contact: React.FC<{}> = () => {
   return (
     <div className="pages-container">
-      <div className="contact-container">
+      <div className="contact-container fade-in">
         <AboutMe />
         <EmailForm />
       </div>

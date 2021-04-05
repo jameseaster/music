@@ -14,5 +14,5 @@ const { Footer } = Layout;
  * Footer component from Ant Design for built in Layout functionality.
  */
 export const FooterCredits: React.FC<{}> = () => (
-  <Footer className="footer">James Easter Music ©2021</Footer>
+  <Footer className="footer fade-in">James Easter Music ©2021</Footer>
 );

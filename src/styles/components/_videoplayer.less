@@ -1,12 +1,11 @@
 .video-player-container {
+  box-shadow: 0 28px 28px rgba(0, 0, 0, 0.7);
+  margin-bottom: 75px;
+  border-radius: 16px;
+  background-color: darkslategrey;
+
   .ant-card-body {
     padding: 8px;
-  }
-}
-
-.video-player {
-  .ant-menu-inline {
-    border: none;
   }
 }
 
@@ -23,6 +22,10 @@
   }
 }
 
+.video-pdf-icon {
+  font-size: 16px;
+}
+
 .video-player-header {
   .ant-space {
     display: flex;
@@ -33,4 +36,15 @@
     margin-bottom: 0;
   }
   margin: 8px 0px 12px;
+}
+
+.video-player-button {
+  width: 33%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.react-player {
+  border: 1px solid fade(@white, 15%);
 }

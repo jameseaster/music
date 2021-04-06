@@ -24,6 +24,7 @@ import { MenuClickEventHandler } from "rc-menu/lib/interface";
 export const Media: React.FC<{}> = () => {
   const [trackIndex, setTrackIndex] = useState(0);
   const [videoIndex, setVideoIndex] = useState(0);
+
   // Changes between audio and video players
   const [toggleMedia, setToggleMedia] = useState(true);
   const [videoAutoPlay, setVideoAutoPlay] = useState(false);

@@ -13,6 +13,7 @@ import {
   DownOutlined,
   // LeftOutlined,
   // RightOutlined,
+  FilePdfOutlined,
   StepForwardOutlined,
   StepBackwardOutlined,
 } from "@ant-design/icons";
@@ -27,9 +28,10 @@ import { useCurrentBreakpoint } from "../hooks";
 import { MenuClickEventHandler } from "rc-menu/lib/interface";
 
 type Video = {
-  title: string;
-  url: string;
   pdf: any;
+  url: string;
+  title: string;
+  pdf_title: string;
 };
 
 type VideoPlayerProps = {
@@ -98,77 +100,74 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
   }, [videoIndex, videos]);
 
   return (
-    <div className="video-player-container">
-      <Card
-        className={className}
-        style={{ borderRadius: "8px", backgroundColor: "#141414" }}
-      >
-        <div className="video-player-header">
-          <Space size={30}>
-            {/* <LeftOutlined onClick={toPrevCategory} /> */}
-            <Title level={4}>{videoCategoryTitle}</Title>
-            {/* <RightOutlined onClick={toNextCategory} /> */}
-          </Space>
+    <Card className={`video-player-container ${className}`}>
+      <div className="video-player-header">
+        <Space size={30}>
+          {/* <LeftOutlined onClick={toPrevCategory} /> */}
+          <Title level={4}>{videoCategoryTitle}</Title>
+          {/* <RightOutlined onClick={toNextCategory} /> */}
+        </Space>
+      </div>
+      <ReactPlayer
+        controls
+        stopOnUnmount
+        playing={playing}
+        url={currentVideo}
+        className="react-player"
+        width={dimensions[breakpoint]?.width || "100%"}
+        height={dimensions[breakpoint]?.height || "100%"}
+      />
+      <div className="video-playlist-icon-container">
+        <div className="video-player-button">
+          <a
+            className="pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            href={videos[videoIndex].pdf}
+          >
+            {videos[selectedIndex].pdf_title}{" "}
+            <FilePdfOutlined className="video-pdf-icon" />
+          </a>
         </div>
-        <ReactPlayer
-          controls
-          stopOnUnmount
-          playing={playing}
-          url={currentVideo}
-          className="react-player"
-          width={dimensions[breakpoint]?.width || "100%"}
-          height={dimensions[breakpoint]?.height || "100%"}
+        <div className="video-player-button">
+          <Button type="text" size="small" onClick={toPrevVideo}>
+            <StepBackwardOutlined style={{ fontSize: "20px" }} />
+          </Button>
+          <div style={{ width: "20%" }} />
+          <Button type="text" size="small" onClick={toNextVideo}>
+            <StepForwardOutlined style={{ fontSize: "20px" }} />
+          </Button>
+        </div>
+        <div className="video-player-button">
+          <Button
+            type="text"
+            size="small"
+            onClick={togglePlaylist}
+            style={{
+              display: "flex",
+            }}
+          >
+            <Text style={{ color: "#FFF", marginRight: "8px" }}>Playlist</Text>
+            <span
+              className={clsx("icon", {
+                "icon-open": showPlaylist,
+              })}
+            >
+              <DownOutlined />
+            </span>
+          </Button>
+        </div>
+      </div>
+      {showPlaylist && (
+        <List
+          noPadding
+          height={150}
+          list={videos}
+          handleSelect={handleSelect}
+          selectedIndex={selectedIndex}
+          className="video-player-list"
         />
-        <div className="video-playlist-icon-container">
-          <div style={{ width: "25%" }}>
-            <a
-              className="pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              href={videos[videoIndex].pdf}
-            >
-              view PDF
-            </a>
-          </div>
-          <div style={{ width: "25%" }}>
-            <Button type="text" size="small" onClick={toPrevVideo}>
-              <StepBackwardOutlined style={{ fontSize: "20px" }} />
-            </Button>
-          </div>
-          <div style={{ width: "25%" }}>
-            <Button type="text" size="small" onClick={toNextVideo}>
-              <StepForwardOutlined style={{ fontSize: "20px" }} />
-            </Button>
-          </div>
-          <div style={{ width: "25%", paddingLeft: "40px" }}>
-            <Button
-              type="text"
-              size="small"
-              onClick={togglePlaylist}
-              style={{
-                display: "flex",
-              }}
-            >
-              <Text style={{ color: "#FFF", marginRight: "8px" }}>
-                Playlist
-              </Text>
-              <div className={clsx("icon", { "icon-open": showPlaylist })}>
-                <DownOutlined />
-              </div>
-            </Button>
-          </div>
-        </div>
-        {showPlaylist && (
-          <List
-            noPadding
-            height={150}
-            list={videos}
-            handleSelect={handleSelect}
-            selectedIndex={selectedIndex}
-            className="video-player-list"
-          />
-        )}
-      </Card>
-    </div>
+      )}
+    </Card>
   );
 };

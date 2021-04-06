@@ -34,9 +34,8 @@ type Track = {
 type AudioPlayerProps = {
   tracks: Track[];
   trackIndex: number;
-  toPrevTrack: () => void;
-  toNextTrack: () => void;
   handleSelect: MenuClickEventHandler;
+  skip: (type: "audio" | "video", to: "next" | "prev") => void;
 };
 
 // Constants
@@ -49,10 +48,9 @@ const { Title } = Typography;
  * play, pause, go to next, and go to previous.
  */
 export const AudioPlayer: React.FC<AudioPlayerProps> = ({
+  skip,
   tracks,
   trackIndex,
-  toPrevTrack,
-  toNextTrack,
   handleSelect,
 }) => {
   // State
@@ -136,7 +134,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
 
     intervalRef.current = window.setInterval(() => {
       if (current !== 0 && current === length) {
-        toNextTrack();
+        skip("audio", "next");
       } else {
         const progress = Number(audioRef.current.seek());
         setTrackProgress(progress);
@@ -214,8 +212,8 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
             </div>
             <AudioControls
               isPlaying={isPlaying}
-              onPrevClick={toPrevTrack}
-              onNextClick={toNextTrack}
+              onPrevClick={() => skip("audio", "prev")}
+              onNextClick={() => skip("audio", "next")}
               onPlayPauseClick={setIsPlaying}
             />
             <div className="sliderWrapper">

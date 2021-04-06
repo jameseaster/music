@@ -10,10 +10,16 @@ import { VideoPlayer } from "../components/VideoPlayer";
 
 // Tracks
 import { tracks } from "../assets/tracks";
-import { videos } from "../assets/videos";
+import { transcriptions /*live, studio */ } from "../assets/videos";
 
 // Types
 import { MenuClickEventHandler } from "rc-menu/lib/interface";
+
+// const videoCategories = {
+//   0: { title: "Transcription", list: transcriptions },
+//   1: { title: "Live", list: live },
+//   2: { title: "Studio", list: studio },
+// };
 
 /**
  * Media Page
@@ -25,26 +31,35 @@ export const Media: React.FC<{}> = () => {
   const [trackIndex, setTrackIndex] = useState(0);
   const [videoIndex, setVideoIndex] = useState(0);
 
+  // const [videos, setVideos] = useState(transcriptions);
+  const videos = transcriptions;
+
   // Changes between audio and video players
   const [toggleMedia, setToggleMedia] = useState(true);
   const [videoAutoPlay, setVideoAutoPlay] = useState(false);
 
   // Handlers
-  const toPrevTrack = () => {
-    return trackIndex - 1 < 0
-      ? setTrackIndex(tracks.length - 1)
-      : setTrackIndex(trackIndex - 1);
+  const skip = (type: "audio" | "video", to: "next" | "prev") => {
+    const index = type === "audio" ? trackIndex : videoIndex;
+    const list = type === "audio" ? tracks : videos;
+    const setFn = type === "audio" ? setTrackIndex : setVideoIndex;
+
+    if (to === "next") {
+      return index < list.length - 1 ? setFn(index + 1) : setFn(0);
+    } else {
+      return index - 1 >= 0 ? setFn(index - 1) : setFn(list.length - 1);
+    }
   };
 
-  const toNextTrack = () => {
-    return trackIndex < tracks.length - 1
-      ? setTrackIndex(trackIndex + 1)
-      : setTrackIndex(0);
-  };
-
+  // const changeCategory = (to: "prev" | "next") => {
+  //   if (to === "next") {
+  //     return index < list.length - 1 ? setFn(index + 1) : setFn(0);
+  //   } else {
+  //     return index - 1 < 0 ? setFn(list.length - 1) : setFn(trackIndex - 1);
+  //   }
+  // };
   const handleAudioSelect: MenuClickEventHandler = ({ key }) => {
     setTrackIndex(Number(key));
-    console.log(tracks[Number(key)]);
   };
 
   const handleVideoSelect: MenuClickEventHandler = ({ key }) => {
@@ -93,15 +108,15 @@ export const Media: React.FC<{}> = () => {
         </div>
         {toggleMedia ? (
           <AudioPlayer
+            skip={skip}
             tracks={tracks}
             trackIndex={trackIndex}
-            toPrevTrack={toPrevTrack}
-            toNextTrack={toNextTrack}
             handleSelect={handleAudioSelect}
           />
         ) : (
           <VideoPlayer
             className="video-player fade-in"
+            skip={skip}
             videos={videos}
             playing={videoAutoPlay}
             videoIndex={videoIndex}

@@ -41,12 +41,11 @@ type VideoPlayerProps = {
   className: string;
   videoIndex: number;
   selectedIndex: number;
-  toNextVideo?: () => void;
-  toPrevVideo?: () => void;
   toPrevCategory?: () => void;
   toNextCategory?: () => void;
   videoCategoryTitle?: string;
   handleSelect: MenuClickEventHandler;
+  skip: (type: "audio" | "video", to: "next" | "prev") => void;
 };
 
 // Constants
@@ -58,6 +57,7 @@ const { Title, Text } = Typography;
  * TODO: add details here
  */
 export const VideoPlayer: React.FC<VideoPlayerProps> = ({
+  skip,
   videos,
   playing,
   className,
@@ -65,8 +65,6 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
   handleSelect,
   selectedIndex,
   videoCategoryTitle = "Transcriptions",
-  toNextVideo = () => console.log("to next video"),
-  toPrevVideo = () => console.log("to prev video"),
   toPrevCategory = () => console.log("to prev category"),
   toNextCategory = () => console.log("to next category"),
 }) => {
@@ -130,11 +128,19 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
           </a>
         </div>
         <div className="video-player-button">
-          <Button type="text" size="small" onClick={toPrevVideo}>
+          <Button
+            type="text"
+            size="small"
+            onClick={() => skip("video", "prev")}
+          >
             <StepBackwardOutlined style={{ fontSize: "20px" }} />
           </Button>
           <div style={{ width: "20%" }} />
-          <Button type="text" size="small" onClick={toNextVideo}>
+          <Button
+            type="text"
+            size="small"
+            onClick={() => skip("video", "next")}
+          >
             <StepForwardOutlined style={{ fontSize: "20px" }} />
           </Button>
         </div>

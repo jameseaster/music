@@ -13,6 +13,10 @@
   margin-top: 8px;
 }
 
+.video-title {
+  margin: 8px;
+}
+
 .video-playlist-icon-container {
   display: flex;
   margin: 12px 8px 4px 8px;
@@ -27,6 +31,9 @@
 }
 
 .video-player-header {
+  display: flex;
+  margin: 8px 0px;
+
   .ant-space {
     display: flex;
     align-items: center;
@@ -35,7 +42,6 @@
   .ant-typography {
     margin-bottom: 0;
   }
-  margin: 8px 0px 12px;
 }
 
 .video-player-button {
@@ -47,4 +53,8 @@
 
 .react-player {
   border: 1px solid fade(@white, 15%);
+
+  .react-player__play-icon {
+    display: none;
+  }
 }

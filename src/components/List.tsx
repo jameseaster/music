@@ -17,9 +17,12 @@ type Track = {
   audioSrc: string;
 };
 type Video = {
-  pdf: any;
+  pdf?: any;
+  id: string;
   url: string;
   title: string;
+  image: string;
+  pdf_title?: string;
 };
 
 type ListProps = {

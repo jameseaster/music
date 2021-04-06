@@ -1,19 +1,27 @@
 // React Imports
-import React, { useState, useEffect } from "react";
+import React, {
+  useRef,
+  useState,
+  Dispatch,
+  useEffect,
+  SetStateAction,
+} from "react";
 
 // Dependency Imports
 import ReactPlayer from "react-player";
 import clsx from "clsx";
 
 // Ant Design
-import { Card, Button, Typography, Space } from "antd";
+import { Card, Button, Typography } from "antd";
 
 // Ant Design Icons
 import {
   DownOutlined,
-  // LeftOutlined,
-  // RightOutlined,
+  LeftOutlined,
+  RightOutlined,
+  PauseOutlined,
   FilePdfOutlined,
+  CaretRightOutlined,
   StepForwardOutlined,
   StepBackwardOutlined,
 } from "@ant-design/icons";
@@ -28,10 +36,12 @@ import { useCurrentBreakpoint } from "../hooks";
 import { MenuClickEventHandler } from "rc-menu/lib/interface";
 
 type Video = {
-  pdf: any;
+  pdf?: any;
+  id: string;
   url: string;
+  image: string;
   title: string;
-  pdf_title: string;
+  pdf_title?: string;
 };
 
 type VideoPlayerProps = {
@@ -41,10 +51,11 @@ type VideoPlayerProps = {
   className: string;
   videoIndex: number;
   selectedIndex: number;
-  toPrevCategory?: () => void;
-  toNextCategory?: () => void;
+  videoPlayPause: () => void;
   videoCategoryTitle?: string;
   handleSelect: MenuClickEventHandler;
+  setPlaying: Dispatch<SetStateAction<boolean>>;
+  changeCategory: (to: "prev" | "next") => void;
   skip: (type: "audio" | "video", to: "next" | "prev") => void;
 };
 
@@ -61,17 +72,24 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
   videos,
   playing,
   className,
+  setPlaying,
   videoIndex,
   handleSelect,
   selectedIndex,
-  videoCategoryTitle = "Transcriptions",
-  toPrevCategory = () => console.log("to prev category"),
-  toNextCategory = () => console.log("to next category"),
+  changeCategory,
+  videoPlayPause,
+  videoCategoryTitle,
 }) => {
+  // Local State
   const [showPlaylist, setShowPlaylist] = useState(false);
   const [currentVideo, setCurrentVideo] = useState<string>(
     videos[Number(videoIndex)].url
   );
+
+  // refs
+  const playerRef = useRef<ReactPlayer>(null);
+
+  // Hooks
   const { breakpoint } = useCurrentBreakpoint();
 
   // Widths for divider at the top of the Pages
@@ -88,7 +106,6 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
     lg: { width: "600px", height: "338px" },
     xl: { width: "700px", height: "394px" },
     xxl: { width: "800px", height: "450px" },
-    // xxl: { width: "900px", height: "506px" },
   };
 
   const togglePlaylist = () => setShowPlaylist(!showPlaylist);
@@ -97,37 +114,62 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
     setCurrentVideo(videos[Number(videoIndex)].url);
   }, [videoIndex, videos]);
 
+  // Keep Player in Preview Mode
+  useEffect(() => {
+    if (playerRef.current) {
+      playerRef.current.showPreview();
+    }
+  }, [videoIndex, videos]);
+
   return (
     <Card className={`video-player-container ${className}`}>
       <div className="video-player-header">
-        <Space size={30}>
-          {/* <LeftOutlined onClick={toPrevCategory} /> */}
+        <div className="video-player-button">
+          <LeftOutlined onClick={() => changeCategory("prev")} />
+        </div>
+        <div className="video-player-button">
           <Title level={4}>{videoCategoryTitle}</Title>
-          {/* <RightOutlined onClick={toNextCategory} /> */}
-        </Space>
+        </div>
+        <div className="video-player-button">
+          <RightOutlined onClick={() => changeCategory("next")} />
+        </div>
       </div>
       <ReactPlayer
         controls
+        ref={playerRef}
         stopOnUnmount
         playing={playing}
         url={currentVideo}
         className="react-player"
+        onClickPreview={() => setPlaying(true)}
+        light={videos[Number(videoIndex)].image}
         width={dimensions[breakpoint]?.width || "100%"}
         height={dimensions[breakpoint]?.height || "100%"}
       />
+
+      <Title className="video-title" level={5}>
+        {videos[Number(videoIndex)].title}
+      </Title>
+
       <div className="video-playlist-icon-container">
+        {/* PDF Download button */}
         <div className="video-player-button">
-          <a
-            className="pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            href={videos[videoIndex].pdf}
-          >
-            {videos[selectedIndex].pdf_title}{" "}
-            <FilePdfOutlined className="video-pdf-icon" />
-          </a>
+          {videos[videoIndex].pdf ? (
+            <a
+              className="pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              href={videos[videoIndex].pdf}
+            >
+              {videos[selectedIndex].pdf_title}{" "}
+              <FilePdfOutlined className="video-pdf-icon" />
+            </a>
+          ) : null}
         </div>
+
+        {/* Prev, Play, Next buttons */}
         <div className="video-player-button">
+          {/* Previous */}
           <Button
             type="text"
             size="small"
@@ -135,7 +177,21 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
           >
             <StepBackwardOutlined style={{ fontSize: "20px" }} />
           </Button>
-          <div style={{ width: "20%" }} />
+
+          {/* Play */}
+          <Button
+            type="text"
+            style={{ display: "flex", alignItems: "center" }}
+            onClick={videoPlayPause}
+          >
+            {playing ? (
+              <PauseOutlined style={{ fontSize: "30px" }} />
+            ) : (
+              <CaretRightOutlined style={{ fontSize: "30px" }} />
+            )}
+          </Button>
+
+          {/* Next */}
           <Button
             type="text"
             size="small"
@@ -144,6 +200,8 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
             <StepForwardOutlined style={{ fontSize: "20px" }} />
           </Button>
         </div>
+
+        {/* Open playlist */}
         <div className="video-player-button">
           <Button
             type="text"
@@ -170,8 +228,8 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
           height={150}
           list={videos}
           handleSelect={handleSelect}
-          selectedIndex={selectedIndex}
           className="video-player-list"
+          selectedIndex={selectedIndex}
         />
       )}
     </Card>

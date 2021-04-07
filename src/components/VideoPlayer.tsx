@@ -141,7 +141,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
         playing={playing}
         url={currentVideo}
         className="react-player"
-        onClickPreview={() => setPlaying(true)}
+        onReady={() => setPlaying(true)}
         light={videos[Number(videoIndex)].image}
         width={dimensions[breakpoint]?.width || "100%"}
         height={dimensions[breakpoint]?.height || "100%"}

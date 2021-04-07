@@ -84,7 +84,6 @@ export const Media: React.FC<{}> = () => {
 
     if (element) {
       element.click();
-      element.click();
     } else {
       setVideoAutoPlay((playing) => !playing);
     }

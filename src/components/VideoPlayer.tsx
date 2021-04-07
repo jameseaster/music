@@ -9,14 +9,13 @@ import React, {
 
 // Dependency Imports
 import ReactPlayer from "react-player";
-import clsx from "clsx";
+// import clsx from "clsx";
 
 // Ant Design
 import { Card, Button, Typography } from "antd";
 
 // Ant Design Icons
 import {
-  DownOutlined,
   LeftOutlined,
   RightOutlined,
   PauseOutlined,
@@ -24,6 +23,7 @@ import {
   CaretRightOutlined,
   StepForwardOutlined,
   StepBackwardOutlined,
+  UnorderedListOutlined,
 } from "@ant-design/icons";
 
 // Components
@@ -60,7 +60,7 @@ type VideoPlayerProps = {
 };
 
 // Constants
-const { Title, Text } = Typography;
+const { Title } = Typography;
 
 /**
  * VideoPlayer
@@ -124,13 +124,13 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
   return (
     <Card className={`video-player-container ${className}`}>
       <div className="video-player-header">
-        <div className="video-player-button">
+        <div className="video-player-header-buttons">
           <LeftOutlined onClick={() => changeCategory("prev")} />
         </div>
-        <div className="video-player-button">
+        <div className="video-player-header-buttons">
           <Title level={4}>{videoCategoryTitle}</Title>
         </div>
-        <div className="video-player-button">
+        <div className="video-player-header-buttons">
           <RightOutlined onClick={() => changeCategory("next")} />
         </div>
       </div>
@@ -153,7 +153,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
 
       <div className="video-playlist-icon-container">
         {/* PDF Download button */}
-        <div className="video-player-button">
+        <div className="video-player-side-buttons ">
           {videos[videoIndex].pdf ? (
             <a
               className="pdf"
@@ -161,14 +161,13 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
               rel="noopener noreferrer"
               href={videos[videoIndex].pdf}
             >
-              {videos[selectedIndex].pdf_title}{" "}
               <FilePdfOutlined className="video-pdf-icon" />
             </a>
           ) : null}
         </div>
 
         {/* Prev, Play, Next buttons */}
-        <div className="video-player-button">
+        <div className="video-player-middle-buttons">
           {/* Previous */}
           <Button
             type="text"
@@ -202,23 +201,9 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
         </div>
 
         {/* Open playlist */}
-        <div className="video-player-button">
-          <Button
-            type="text"
-            size="small"
-            onClick={togglePlaylist}
-            style={{
-              display: "flex",
-            }}
-          >
-            <Text style={{ color: "#FFF", marginRight: "8px" }}>Playlist</Text>
-            <span
-              className={clsx("icon", {
-                "icon-open": showPlaylist,
-              })}
-            >
-              <DownOutlined />
-            </span>
+        <div className="video-player-side-buttons ">
+          <Button type="text" size="small" onClick={togglePlaylist}>
+            <UnorderedListOutlined style={{ fontSize: "18px" }} />
           </Button>
         </div>
       </div>

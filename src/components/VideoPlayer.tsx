@@ -138,6 +138,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
         controls
         ref={playerRef}
         stopOnUnmount
+        playsinline
         playing={playing}
         url={currentVideo}
         className="react-player"

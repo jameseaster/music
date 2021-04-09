@@ -1,28 +1,19 @@
 // React Imports
-import React, { useState, useEffect, useRef } from "react";
-
+import { useState, useEffect, useRef } from "react";
 // Dependency Imports
 import clsx from "clsx";
-
 // Ant Design Imports
-import { Slider, Typography, Image, Button } from "antd";
-
-// Ant Design Icons
-import { RightOutlined } from "@ant-design/icons";
-
+import { Slider, Typography, Image } from "antd";
 // Howler Imports
 import { Howl /* Howler */ } from "howler";
-
 // Hooks
 import { useCurrentBreakpoint } from "../hooks";
-
 // Components
 import { List } from "../components/List";
 import { AudioControls } from "../components/AudioControls";
-
+import { ExpandPlaylistButton } from "../components/ExpandPlaylistButton";
 // Types
 import { MenuClickEventHandler } from "rc-menu/lib/interface";
-
 type Track = {
   title: string;
   image: string;
@@ -30,14 +21,12 @@ type Track = {
   artist: string;
   audioSrc: string;
 };
-
 type AudioPlayerProps = {
   tracks: Track[];
   trackIndex: number;
   handleSelect: MenuClickEventHandler;
-  skip: (type: "audio" | "video", to: "next" | "prev") => void;
+  skip: (to: "next" | "prev") => void;
 };
-
 // Constants
 const { Title } = Typography;
 
@@ -55,8 +44,9 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
 }) => {
   // State
   const [isPlaying, setIsPlaying] = useState(false);
-  const [viewPlaylist, setViewPlaylist] = useState(false);
   const [trackProgress, setTrackProgress] = useState(0);
+  const [viewPlaylist, setViewPlaylist] = useState(true);
+  const [size, setSize] = useState<"small" | "normal" | null>(null);
 
   // Hooks
   const { breakpoint } = useCurrentBreakpoint();
@@ -65,9 +55,9 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
   const { title, artist, /* color,*/ image, audioSrc } = tracks[trackIndex];
 
   // Refs
-  const audioRef = useRef(new Howl({ src: [audioSrc], autoplay: false }));
-  const intervalRef = useRef(0);
   const isReady = useRef(false);
+  const intervalRef = useRef(0);
+  const audioRef = useRef(new Howl({ src: [audioSrc], autoplay: false }));
 
   // Current track duration
   const duration = audioRef.current.duration();
@@ -99,6 +89,13 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
       clearInterval(intervalRef.current);
     };
   }, []);
+
+  // Size of window
+  useEffect(() => {
+    return breakpoint === "xs" || breakpoint === "sm"
+      ? setSize("small")
+      : setSize("normal");
+  }, [breakpoint]);
 
   // Handle setup when changing tracks
   useEffect(() => {
@@ -134,7 +131,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
 
     intervalRef.current = window.setInterval(() => {
       if (current !== 0 && current === length) {
-        skip("audio", "next");
+        skip("next");
       } else {
         const progress = Number(audioRef.current.seek());
         setTrackProgress(progress);
@@ -160,94 +157,71 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
   const togglePlaylistView = () => setViewPlaylist((v) => !v);
 
   return (
-    <>
-      <div
-        className={clsx("audio-player-container", {
-          column: breakpoint === "xs" || breakpoint === "sm",
-        })}
-      >
-        <div className="audio-player">
-          <div className="track-info">
-            <div className="playlist-icon-container">
-              <Button
-                type="text"
-                size="small"
-                onClick={togglePlaylistView}
-                className={clsx(
-                  "icon",
-                  {
-                    "icon-open":
-                      viewPlaylist &&
-                      breakpoint !== "xs" &&
-                      breakpoint !== "sm",
-                  },
-                  {
-                    condensed:
-                      !viewPlaylist &&
-                      (breakpoint === "xs" || breakpoint === "sm"),
-                  },
-                  {
-                    "condensed-open":
-                      viewPlaylist &&
-                      (breakpoint === "xs" || breakpoint === "sm"),
-                  }
-                )}
-              >
-                <RightOutlined />
-              </Button>
-            </div>
-
-            <div className="imageWrapper">
-              <Image
-                src={image}
-                preview={false}
-                alt={`track artwork for ${title} by ${artist}`}
-              />
-            </div>
-            <div className="titleWrapper">
-              <Title level={4}>{title}</Title>
-            </div>
-            <div className="artistWrapper">
-              <Title level={5}>{artist}</Title>
-            </div>
-            <AudioControls
-              isPlaying={isPlaying}
-              onPrevClick={() => skip("audio", "prev")}
-              onNextClick={() => skip("audio", "next")}
-              onPlayPauseClick={setIsPlaying}
+    <div
+      className={clsx("audio-player-container", {
+        column: size === "small",
+      })}
+    >
+      <div className="audio-player">
+        {!viewPlaylist && (
+          <ExpandPlaylistButton
+            size={size}
+            viewPlaylist={viewPlaylist}
+            togglePlaylistView={togglePlaylistView}
+          />
+        )}
+        <div className="track-info">
+          <div className="imageWrapper">
+            <Image
+              src={image}
+              preview={false}
+              alt={`track artwork for ${title} by ${artist}`}
             />
-            <div className="sliderWrapper">
-              <Slider
-                min={0}
-                step={1}
-                max={duration}
-                className="progress"
-                value={trackProgress}
-                tooltipVisible={false}
-                onAfterChange={onScrubEnd}
-                style={{ color: trackStyling }}
-                onChange={(n: number) => onScrub(Number(n))}
-              />
-            </div>
+          </div>
+          <div className="titleWrapper">
+            <Title level={4}>{title}</Title>
+          </div>
+          <div className="artistWrapper">
+            <Title level={5}>{artist}</Title>
+          </div>
+          <AudioControls
+            isPlaying={isPlaying}
+            onPrevClick={() => skip("prev")}
+            onNextClick={() => skip("next")}
+            onPlayPauseClick={setIsPlaying}
+          />
+          <div className="sliderWrapper">
+            <Slider
+              min={0}
+              step={1}
+              max={duration}
+              className="progress"
+              value={trackProgress}
+              tooltipVisible={false}
+              onAfterChange={onScrubEnd}
+              style={{ color: trackStyling }}
+              onChange={(n: number) => onScrub(Number(n))}
+            />
           </div>
         </div>
-        {viewPlaylist && (
-          <div
-            className={clsx(
-              "audio-playlist",
-
-              { "margin-top": breakpoint === "xs" || breakpoint === "sm" }
-            )}
-          >
-            <List
-              height={363}
-              list={tracks}
-              selectedIndex={trackIndex}
-              handleSelect={handleSelect}
-            />
-          </div>
-        )}
       </div>
-    </>
+      {viewPlaylist && (
+        <div
+          className={clsx(
+            "audio-playlist",
+
+            { "margin-top": size === "small" }
+          )}
+        >
+          <List
+            height={363}
+            list={tracks}
+            selectedIndex={trackIndex}
+            handleSelect={handleSelect}
+            togglePlaylistView={togglePlaylistView}
+          />
+        </div>
+      )}
+    </div>
   );
 };

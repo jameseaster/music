@@ -1,9 +1,5 @@
-// React Imports
-import React from "react";
-
 // Ant Design Imports
 import { Image, Space } from "antd";
-
 // Images
 import gsg01 from "../assets/images/3x2-gsg01.jpg";
 import gsg04 from "../assets/images/3x4-gsg04.jpg";

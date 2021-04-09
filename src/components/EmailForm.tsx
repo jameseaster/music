@@ -1,7 +1,9 @@
 // React Imports
-import React, { useState } from "react";
-import emailjs from "emailjs-com";
+import { useState } from "react";
+// Dependency Imports
 import axios from "axios";
+import emailjs from "emailjs-com";
+// Ant Design Imports
 import { Form, Input, Button, Modal } from "antd";
 
 /* eslint-disable no-template-curly-in-string */

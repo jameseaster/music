@@ -1,9 +1,5 @@
-// React Imports
-import React from "react";
-
 // Ant Design Imports
 import { Layout } from "antd";
-
 // Constants
 const { Footer } = Layout;
 

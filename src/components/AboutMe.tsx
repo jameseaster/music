@@ -1,8 +1,6 @@
-// React Imports
-import React from "react";
-
 // Ant Design Imports
 import { Typography } from "antd";
+// Constants
 const { Text } = Typography;
 
 /**

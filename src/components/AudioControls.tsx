@@ -1,21 +1,17 @@
-// React Imports
-import React from "react";
-
 // Ant Design Imports
 import { Button } from "antd";
-
 // Ant Design Icons
 import Pause from "@ant-design/icons/PauseOutlined";
 import Play from "@ant-design/icons/CaretRightOutlined";
 import Next from "@ant-design/icons/StepForwardOutlined";
 import Prev from "@ant-design/icons/StepBackwardOutlined";
-
-interface AudioControlsProps {
+// Types
+type AudioControlsProps = {
   isPlaying: boolean;
   onPlayPauseClick: (command: boolean) => void;
   onPrevClick: () => void;
   onNextClick: () => void;
-}
+};
 
 /**
  * AudioControls

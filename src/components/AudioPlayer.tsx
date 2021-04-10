@@ -9,7 +9,7 @@ import { Howl /* Howler */ } from "howler";
 // Hooks
 import { useCurrentBreakpoint } from "../hooks";
 // Components
-import { List } from "../components/List";
+import { Playlist } from "./Playlist";
 import { AudioControls } from "../components/AudioControls";
 import { ExpandPlaylistButton } from "../components/ExpandPlaylistButton";
 // Types
@@ -44,8 +44,9 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
 }) => {
   // State
   const [isPlaying, setIsPlaying] = useState(false);
+  const [initialLoad, setInitialLoad] = useState(true);
   const [trackProgress, setTrackProgress] = useState(0);
-  const [viewPlaylist, setViewPlaylist] = useState(true);
+  const [viewPlaylist, setViewPlaylist] = useState(false);
   const [size, setSize] = useState<"small" | "normal" | null>(null);
 
   // Hooks
@@ -92,10 +93,18 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
 
   // Size of window
   useEffect(() => {
+    // Hides playlist if the size of the window is xs or sm
+    if (initialLoad && breakpoint !== "") {
+      setInitialLoad(false);
+      if (breakpoint !== "xs" && breakpoint !== "sm") {
+        setViewPlaylist(true);
+      }
+    }
+
     return breakpoint === "xs" || breakpoint === "sm"
       ? setSize("small")
       : setSize("normal");
-  }, [breakpoint]);
+  }, [breakpoint, initialLoad]);
 
   // Handle setup when changing tracks
   useEffect(() => {
@@ -213,7 +222,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
             { "margin-top": size === "small" }
           )}
         >
-          <List
+          <Playlist
             height={363}
             list={tracks}
             selectedIndex={trackIndex}

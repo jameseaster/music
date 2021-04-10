@@ -18,6 +18,7 @@ type VideoListProps = {
   videoList: Video[];
   videoCategoryTitle: string;
 };
+
 /**
  * VideoList
  *

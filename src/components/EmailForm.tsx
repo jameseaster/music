@@ -7,7 +7,7 @@ import emailjs from "emailjs-com";
 import { Form, Input, Button, Modal } from "antd";
 
 /* eslint-disable no-template-curly-in-string */
-// TODO:
+// FIXME:
 const validateMessages = {
   required: "${label} is required!",
   types: {

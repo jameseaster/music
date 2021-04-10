@@ -32,12 +32,13 @@ type ListProps = {
   togglePlaylistView: () => void;
   handleSelect: MenuClickEventHandler;
 };
+
 /**
- * List
+ * Playlist
  *
  * TODO: add details here
  */
-export const List: React.FC<ListProps> = ({
+export const Playlist: React.FC<ListProps> = ({
   list,
   className,
   handleSelect,

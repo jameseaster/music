@@ -1,18 +1,16 @@
 // React Imports
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-
 // React Ant Design
 import { Layout, Divider } from "antd";
-
 // Components
 import { Home } from "./Home";
 import { Media } from "./Media";
+import { Audio } from "./Audio";
+import { Video } from "./Video";
 import { Contact } from "./Contact";
-
 // Hooks
 import { useCurrentBreakpoint } from "../hooks";
-
 // Constants
 const { Content } = Layout;
 
@@ -41,13 +39,26 @@ export const Pages: React.FC<{}> = () => {
 
   return (
     <>
-      <div className="home-divider" style={{ width: dividerWidth[breakpoint] }}>
+      <div
+        className="home-divider"
+        style={{ width: dividerWidth[breakpoint], marginTop: "42px" }}
+      >
         <Divider />
       </div>
       <Switch>
         <Route path="/media">
           <Content>
             <Media />
+          </Content>
+        </Route>
+        <Route path="/audio">
+          <Content>
+            <Audio />
+          </Content>
+        </Route>
+        <Route path="/video">
+          <Content>
+            <Video />
           </Content>
         </Route>
         <Route path="/contact">

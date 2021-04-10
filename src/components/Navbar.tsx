@@ -1,10 +1,12 @@
-// React Imports
+// Dependency Imports
+import clsx from "clsx";
 import { Link } from "react-router-dom";
 // Ant Design Imports
 import { Menu, Layout } from "antd";
+// Hooks
+import { useMobileFormatting } from "../hooks";
 // Constants
 const { Header } = Layout;
-
 /**
  * Navbar
  *
@@ -14,13 +16,16 @@ const { Header } = Layout;
  * navigate between Pages
  */
 export const Navbar: React.FC<{}> = () => {
-  const menuItemStyle = { width: "15%", minWidth: "100px", margin: "8px" };
+  const menuItemStyle = {};
+  // Adapt format to mobile
+  const mobileLayout = useMobileFormatting();
+
   return (
-    <Header className="header fade-in">
+    <Header className="header-container fade-in">
       <Menu
         theme="dark"
         mode="horizontal"
-        className="header-menu"
+        className={clsx("header-menu", { "mobile-header": mobileLayout })}
         defaultSelectedKeys={["Home"]}
       >
         <Menu.Item key="Home" style={menuItemStyle}>
@@ -28,8 +33,11 @@ export const Navbar: React.FC<{}> = () => {
             Home
           </Link>
         </Menu.Item>
-        <Menu.Item key="Media" style={menuItemStyle}>
-          <Link to="/media">Media</Link>
+        <Menu.Item key="Audio" style={menuItemStyle}>
+          <Link to="/audio">Audio</Link>
+        </Menu.Item>
+        <Menu.Item key="Video" style={menuItemStyle}>
+          <Link to="/video">Video</Link>
         </Menu.Item>
         <Menu.Item key="Contact" style={menuItemStyle}>
           <Link to="/contact">Contact</Link>

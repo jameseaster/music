@@ -2,9 +2,11 @@
 import { useState, useEffect } from "react";
 // Components
 import { VideoList } from "../components/VideoList";
-// import { MediaSelectorButton } from "../components/MediaSelectorButton";
+import { VideoSelectionButtons } from "../components/VideoSelectionButtons";
 // Assets
 import { allVideos } from "../assets/videos";
+
+type VideoType = "Live" | "Transcriptions" | "Studio";
 
 /**
  * Video Page
@@ -13,35 +15,23 @@ import { allVideos } from "../assets/videos";
  */
 export const Video: React.FC<{}> = () => {
   // Local State
-  // const [media, setMedia] = useState<"audio" | "video">("audio");
-  const [videoCategoryIndex, setVideoCategoryIndex] = useState(0);
-  const [videos, setVideos] = useState(allVideos[videoCategoryIndex]);
+  const [videos, setVideos] = useState(allVideos[0]);
+  const [videoType, setVideoType] = useState<VideoType>("Transcriptions");
 
-  // Update videos when videoCategoryIndex changes
+  // Update videos when videoType changes
   useEffect(() => {
-    setVideos(allVideos[videoCategoryIndex]);
-  }, [videoCategoryIndex]);
-
-  // Change video category
-  const changeCategory = (to: "prev" | "next") => {
-    return to === "next"
-      ? videoCategoryIndex < allVideos.length - 1
-        ? setVideoCategoryIndex(videoCategoryIndex + 1)
-        : setVideoCategoryIndex(0)
-      : videoCategoryIndex - 1 < 0
-      ? setVideoCategoryIndex(allVideos.length - 1)
-      : setVideoCategoryIndex(videoCategoryIndex - 1);
-  };
+    const idx = allVideos.map((v) => v.title).indexOf(videoType);
+    if (idx > -1) setVideos(allVideos[idx]);
+  }, [videoType]);
 
   return (
     <div className="pages-container">
-      <div className="media-container">
-        {/* <MediaSelectorButton media={media} setMedia={setMedia} /> */}
-        <VideoList
-          videoList={videos.info}
-          changeCategory={changeCategory}
-          videoCategoryTitle={videos.title}
+      <div className="audio-container">
+        <VideoSelectionButtons
+          videoType={videoType}
+          setVideoType={setVideoType}
         />
+        <VideoList videoList={videos.info} />
       </div>
     </div>
   );

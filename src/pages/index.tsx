@@ -1,16 +1,17 @@
 // React Imports
 import React from "react";
 import { Switch, Route } from "react-router-dom";
+// Dependency Imports
+import clsx from "clsx";
 // React Ant Design
 import { Layout, Divider } from "antd";
 // Components
 import { Home } from "./Home";
-import { Media } from "./Media";
 import { Audio } from "./Audio";
 import { Video } from "./Video";
 import { Contact } from "./Contact";
 // Hooks
-import { useCurrentBreakpoint } from "../hooks";
+import { useCurrentBreakpoint, useMobileFormatting } from "../hooks";
 // Constants
 const { Content } = Layout;
 
@@ -23,7 +24,8 @@ const { Content } = Layout;
  * of the baked in Layout components
  */
 export const Pages: React.FC<{}> = () => {
-  // Returns the current breakpoint
+  // Hooks
+  const mobileLayout = useMobileFormatting();
   const { breakpoint } = useCurrentBreakpoint();
 
   // Widths for divider at the top of the Pages
@@ -41,37 +43,38 @@ export const Pages: React.FC<{}> = () => {
     <>
       <div
         className="home-divider"
-        style={{ width: dividerWidth[breakpoint], marginTop: "42px" }}
+        style={{
+          width: dividerWidth[breakpoint],
+          marginTop: "42px",
+          visibility: mobileLayout ? "hidden" : "visible",
+        }}
       >
         <Divider />
       </div>
-      <Switch>
-        <Route path="/media">
-          <Content>
-            <Media />
-          </Content>
-        </Route>
-        <Route path="/audio">
-          <Content>
-            <Audio />
-          </Content>
-        </Route>
-        <Route path="/video">
-          <Content>
-            <Video />
-          </Content>
-        </Route>
-        <Route path="/contact">
-          <Content>
-            <Contact />
-          </Content>
-        </Route>
-        <Route path="/">
-          <Content>
-            <Home />
-          </Content>
-        </Route>
-      </Switch>
+      <div className={clsx({ "mobile-padding": true })}>
+        <Switch>
+          <Route path="/audio">
+            <Content>
+              <Audio />
+            </Content>
+          </Route>
+          <Route path="/video">
+            <Content>
+              <Video />
+            </Content>
+          </Route>
+          <Route path="/contact">
+            <Content>
+              <Contact />
+            </Content>
+          </Route>
+          <Route path="/">
+            <Content>
+              <Home />
+            </Content>
+          </Route>
+        </Switch>
+      </div>
     </>
   );
 };

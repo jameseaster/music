@@ -2,7 +2,6 @@
 import { Space } from "antd";
 // Components
 import { VideoCard } from "../components/VideoCard";
-import { VideoCategorySelector } from "../components/VideoCategorySelector";
 // Types
 type Video = {
   pdf?: any;
@@ -14,9 +13,7 @@ type Video = {
   sub_title?: string;
 };
 type VideoListProps = {
-  changeCategory: (to: "prev" | "next") => void;
   videoList: Video[];
-  videoCategoryTitle: string;
 };
 
 /**
@@ -24,11 +21,7 @@ type VideoListProps = {
  *
  * TODO: styles & documentation
  */
-export const VideoList: React.FC<VideoListProps> = ({
-  videoList,
-  changeCategory,
-  videoCategoryTitle,
-}) => (
+export const VideoList: React.FC<VideoListProps> = ({ videoList }) => (
   <div
     className="video-list"
     style={{
@@ -37,12 +30,8 @@ export const VideoList: React.FC<VideoListProps> = ({
       alignItems: "center",
     }}
   >
-    <VideoCategorySelector
-      changeCategory={changeCategory}
-      videoCategoryTitle={videoCategoryTitle}
-    />
     <div className="videos-container">
-      <Space size={12} wrap>
+      <Space size={6} wrap>
         {videoList.map((v: Video) => (
           <VideoCard key={v.id} video={v} />
         ))}

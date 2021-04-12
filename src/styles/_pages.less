@@ -7,6 +7,14 @@
   align-items: center;
 }
 
+// Mobile Formatting
+.mobile-padding {
+  padding-bottom: 65px;
+}
+.mobile-audio-margin {
+  margin-top: 30%;
+}
+
 // Home page container
 .home-container {
   display: flex;
@@ -26,8 +34,30 @@
   max-width: 900px;
 }
 
-// Media page container
-.media-container {
+// Audio page container
+.audio-container {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 75vh;
+
+  .ant-space {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .media-button {
+    margin-bottom: 20px;
+  }
+  .border {
+    border: 1px solid rgba(255, 255, 255, 0.85);
+  }
+}
+
+// Video page container
+.video-container {
   display: flex;
   text-align: center;
   align-items: center;

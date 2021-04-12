@@ -18,7 +18,6 @@ export const FooterCredits: React.FC<{}> = () => {
   // Adapt format to mobile
   const mobileLayout = useMobileFormatting();
 
-  console.log(mobileLayout);
   return (
     <Footer className={clsx("fade-in", { "mobile-footer": mobileLayout })}>
       <div className="footer-text-container">

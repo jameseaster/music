@@ -1,8 +1,6 @@
 // React Imports
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-// Dependency Imports
-import clsx from "clsx";
 // React Ant Design
 import { Layout, Divider } from "antd";
 // Components
@@ -51,30 +49,28 @@ export const Pages: React.FC<{}> = () => {
       >
         <Divider />
       </div>
-      <div className={clsx({ "mobile-padding": true })}>
-        <Switch>
-          <Route path="/audio">
-            <Content>
-              <Audio />
-            </Content>
-          </Route>
-          <Route path="/video">
-            <Content>
-              <Video />
-            </Content>
-          </Route>
-          <Route path="/contact">
-            <Content>
-              <Contact />
-            </Content>
-          </Route>
-          <Route path="/">
-            <Content>
-              <Home />
-            </Content>
-          </Route>
-        </Switch>
-      </div>
+      <Switch>
+        <Route path="/audio">
+          <Content>
+            <Audio />
+          </Content>
+        </Route>
+        <Route path="/video">
+          <Content>
+            <Video />
+          </Content>
+        </Route>
+        <Route path="/contact">
+          <Content>
+            <Contact />
+          </Content>
+        </Route>
+        <Route path="/">
+          <Content>
+            <Home />
+          </Content>
+        </Route>
+      </Switch>
     </>
   );
 };

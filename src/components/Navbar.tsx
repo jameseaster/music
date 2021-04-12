@@ -1,12 +1,17 @@
+// React Imports
+import { useState } from "react";
 // Dependency Imports
-import clsx from "clsx";
 import { Link } from "react-router-dom";
 // Ant Design Imports
-import { Menu, Layout } from "antd";
+import { Menu, Layout, Typography, Space, Drawer, Button } from "antd";
+// Ant Design Icons
+import { MenuOutlined } from "@ant-design/icons";
 // Hooks
 import { useMobileFormatting } from "../hooks";
 // Constants
 const { Header } = Layout;
+const { Title } = Typography;
+
 /**
  * Navbar
  *
@@ -16,33 +21,75 @@ const { Header } = Layout;
  * navigate between Pages
  */
 export const Navbar: React.FC<{}> = () => {
-  const menuItemStyle = {};
+  // Local State
+  const [visible, setVisible] = useState(false);
+
+  // Style
+  const menuItemStyle = { margin: "12px" };
+
   // Adapt format to mobile
   const mobileLayout = useMobileFormatting();
 
+  // Open and close nav drawer
+  const showDrawer = () => setVisible(true);
+  const onClose = () => setVisible(false);
+
   return (
-    <Header className="header-container fade-in">
-      <Menu
-        theme="dark"
-        mode="horizontal"
-        className={clsx("header-menu", { "mobile-header": mobileLayout })}
-        defaultSelectedKeys={["Home"]}
+    <>
+      <Header className="header-container fade-in">
+        {mobileLayout ? (
+          <Space size={6} className="mobile-navbar">
+            <MenuOutlined onClick={showDrawer} className="hamburger" />
+            <Title level={3}>James Easter Music</Title>
+          </Space>
+        ) : (
+          <Menu
+            theme="dark"
+            className="header-menu"
+            defaultSelectedKeys={["Home"]}
+          >
+            <Menu.Item key="Home" style={menuItemStyle}>
+              <Link className="nav-link" to="/">
+                {/* FIXME: add home page */}
+                Gallery
+              </Link>
+            </Menu.Item>
+            <Menu.Item key="Audio" style={menuItemStyle}>
+              <Link to="/audio">Audio</Link>
+            </Menu.Item>
+            <Menu.Item key="Video" style={menuItemStyle}>
+              <Link to="/video">Video</Link>
+            </Menu.Item>
+            <Menu.Item key="Contact" style={menuItemStyle}>
+              <Link to="/contact">Contact</Link>
+            </Menu.Item>
+          </Menu>
+        )}
+      </Header>
+      <Drawer
+        height={"auto"}
+        closable={true}
+        placement={"top"}
+        visible={visible}
+        onClose={onClose}
       >
-        <Menu.Item key="Home" style={menuItemStyle}>
-          <Link className="nav-link" to="/">
-            Home
-          </Link>
-        </Menu.Item>
-        <Menu.Item key="Audio" style={menuItemStyle}>
-          <Link to="/audio">Audio</Link>
-        </Menu.Item>
-        <Menu.Item key="Video" style={menuItemStyle}>
-          <Link to="/video">Video</Link>
-        </Menu.Item>
-        <Menu.Item key="Contact" style={menuItemStyle}>
-          <Link to="/contact">Contact</Link>
-        </Menu.Item>
-      </Menu>
-    </Header>
+        <div className="mobile-header-menu">
+          <Button type="text" onClick={onClose} style={menuItemStyle}>
+            <Link className="nav-link" to="/">
+              Gallery
+            </Link>
+          </Button>
+          <Button type="text" onClick={onClose} style={menuItemStyle}>
+            <Link to="/audio">Music</Link>
+          </Button>
+          <Button type="text" onClick={onClose} style={menuItemStyle}>
+            <Link to="/video">Video</Link>
+          </Button>
+          <Button type="text" onClick={onClose} style={menuItemStyle}>
+            <Link to="/contact">Contact</Link>
+          </Button>
+        </div>
+      </Drawer>
+    </>
   );
 };

@@ -26,7 +26,7 @@ export const Video: React.FC<{}> = () => {
 
   return (
     <div className="pages-container">
-      <div className="audio-container">
+      <div className="video-container">
         <VideoSelectionButtons
           videoType={videoType}
           setVideoType={setVideoType}

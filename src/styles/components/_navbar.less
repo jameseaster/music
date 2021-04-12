@@ -7,18 +7,24 @@
   z-index: 1000;
   text-align: center;
 
-  // Header menu
-  .header-menu {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
   // Mobile responsive formatting
-  .mobile-header {
-    background-color: @mobile-header-footer-background-color;
-    border-bottom: 1px solid fade(@white, 85);
+  .mobile-navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: fade(@white, 90);
     box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+    padding: 0 16px;
+
+    h3.ant-typography {
+      margin: 0;
+      color: @background1;
+    }
+
+    .hamburger {
+      color: @background1;
+      font-size: 24px;
+    }
   }
 
   // Only make the name bolder on the Navbar instead of the blue outline
@@ -31,4 +37,25 @@
   .ant-menu-dark.ant-menu-horizontal > .ant-menu-item:hover {
     border: 1px solid @divider-color;
   }
+
+  // Header menu
+  .header-menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+// Cover over page when drawer is open
+.ant-drawer-mask {
+  background-color: rgba(255, 255, 255, 0.65);
+}
+
+// Mobile header menu
+.mobile-header-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

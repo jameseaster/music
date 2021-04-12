@@ -30,7 +30,7 @@ export const VideoList: React.FC<VideoListProps> = ({ videoList }) => (
       alignItems: "center",
     }}
   >
-    <div className="videos-container">
+    <div className="videos-list-container">
       <Space size={6} wrap>
         {videoList.map((v: Video) => (
           <VideoCard key={v.id} video={v} />

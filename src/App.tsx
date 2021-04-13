@@ -1,5 +1,4 @@
-// React Imports
-import React from "react";
+// Dependency Imports
 import { BrowserRouter as Router } from "react-router-dom";
 
 // Style Imports

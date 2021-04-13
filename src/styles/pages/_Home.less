@@ -1,7 +1,7 @@
 // Home page container
 .home-container {
   display: flex;
-  max-width: 900px;
+  max-width: 1200px;
   text-align: center;
   align-items: center;
   flex-direction: column;
@@ -10,5 +10,70 @@
   .ant-space {
     display: flex;
     justify-content: center;
+  }
+
+  h1.ant-typography {
+    margin: 0;
+    font-weight: 100;
+    padding-bottom: 0;
+  }
+
+  .picture-title {
+    right: 0.5%;
+    bottom: 2%;
+    position: absolute;
+    font-size: 60px;
+    color: white;
+  }
+
+  .picture-subtitle {
+    right: 0.5%;
+    bottom: 0%;
+    position: absolute;
+    font-size: 25px;
+    color: white;
+  }
+
+  .mobile-name-text {
+    right: 18%;
+    bottom: 28%;
+    position: absolute;
+    font-size: 35px;
+    color: white;
+  }
+
+  .picture-text {
+    width: 265px;
+    position: absolute;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    padding: 5%;
+    left: 5%;
+    top: 20%;
+    bottom: 20%;
+    border-radius: 2%;
+    background-color: rgba(0, 0, 0, 0.65);
+  }
+
+  .about-text {
+    max-width: 600px;
+    margin: 16px;
+  }
+
+  .about-text-btn {
+    background-color: rgba(255, 255, 255, 0.03);
+    border: none;
+
+    &:active {
+      border: none;
+    }
+    // Adds border to button when hovering on desktop
+    @media screen and (min-width: 575px) {
+      &:hover {
+        border: 1px solid fade(white, 95);
+      }
+    }
   }
 }

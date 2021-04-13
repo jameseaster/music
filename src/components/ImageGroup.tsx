@@ -16,16 +16,16 @@ import ochancey06 from "../assets/images/3x4-ochancey06.jpg";
  */
 export const ImageGroup: React.FC<{}> = () => (
   <Image.PreviewGroup>
-    <Space size={[6, 0]} wrap>
-      <Image className="single-image" width={"260px"} src={gsg04} />
-      <Image className="single-image" width={"260px"} src={ochancey01} />
-      <Image className="single-image" width={"260px"} src={ochancey06} />
-      <Image className="single-image" width={"260px"} src={ochancey04} />
+    <Space size={0} wrap>
+      <Image className="image" src={gsg04} />
+      <Image className="image" src={ochancey01} />
+      <Image className="image" src={ochancey06} />
+      <Image className="image" src={ochancey04} />
       <Space size={-6} direction="vertical">
-        <Image width={"260px"} src={gsg01} />
-        <Image width={"260px"} src={gsg06} />
+        <Image className="image image-stack-top" src={gsg01} />
+        <Image className="image" src={gsg06} />
       </Space>
-      <Image className="single-image" width={"260px"} src={ochancey05} />
+      <Image className="image" src={ochancey05} />
     </Space>
   </Image.PreviewGroup>
 );

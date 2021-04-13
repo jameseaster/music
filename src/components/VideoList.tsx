@@ -31,7 +31,7 @@ export const VideoList: React.FC<VideoListProps> = ({ videoList }) => (
     }}
   >
     <div className="videos-list-container">
-      <Space size={6} wrap>
+      <Space size={10} wrap>
         {videoList.map((v: Video) => (
           <VideoCard key={v.id} video={v} />
         ))}

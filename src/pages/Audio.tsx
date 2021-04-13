@@ -1,12 +1,15 @@
 // React Imports
 import { useState } from "react";
+// Dependency Imports
+import clsx from "clsx";
 // Components
 import { AudioPlayer } from "../components/AudioPlayer";
 // Assets
 import { tracks } from "../assets/tracks";
 // Types
 import { MenuClickEventHandler } from "rc-menu/lib/interface";
-
+// Hooks
+import { useCurrentBreakpoint } from "../hooks";
 /**
  * Audio Page
  *
@@ -15,6 +18,9 @@ import { MenuClickEventHandler } from "rc-menu/lib/interface";
 export const Audio: React.FC<{}> = () => {
   // Local State
   const [trackIndex, setTrackIndex] = useState(0);
+
+  // Hooks
+  const { breakpoint: bp } = useCurrentBreakpoint();
 
   // Skip audio track forward or backward
   const skip = (to: "next" | "prev") => {
@@ -34,7 +40,7 @@ export const Audio: React.FC<{}> = () => {
 
   return (
     <div className="pages-container">
-      <div className={"audio-container"}>
+      <div className={clsx("audio-container", { [`${bp}-height`]: bp.length })}>
         <AudioPlayer
           skip={skip}
           tracks={tracks}

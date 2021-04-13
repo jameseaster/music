@@ -15,7 +15,17 @@ const { Text } = Typography;
 export const FooterCredits: React.FC<{}> = () => (
   <Footer className={clsx("fade-in")}>
     <div className="footer-text-container">
-      <Text>James Easter ©2021</Text>
+      <Text className="text">All content © 2021 James Easter</Text>
+      <Text className="text">
+        Site built & designed by{" "}
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://jameseaster.dev/"
+        >
+          <i>James Easter</i>
+        </a>
+      </Text>
     </div>
   </Footer>
 );

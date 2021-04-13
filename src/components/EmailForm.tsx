@@ -6,13 +6,11 @@ import emailjs from "emailjs-com";
 // Ant Design Imports
 import { Form, Input, Button, Modal } from "antd";
 
+// Constants
 /* eslint-disable no-template-curly-in-string */
-// FIXME:
 const validateMessages = {
-  required: "${label} is required!",
-  types: {
-    email: "${label} is not a valid email!",
-  },
+  required: "${label} is required",
+  types: { email: "${label} is not a valid email" },
 };
 /* eslint-enable no-template-curly-in-string */
 
@@ -82,21 +80,29 @@ export const EmailForm: React.FC<{}> = () => {
       <Form.Item name={["name"]} label="Name" rules={[{ required: true }]}>
         <Input />
       </Form.Item>
-      <Form.Item name={["email"]} label="Email" rules={[{ type: "email" }]}>
+      <Form.Item
+        label="Email"
+        name={["email"]}
+        rules={[{ required: true }, { type: "email" }]}
+      >
         <Input />
       </Form.Item>
-      <Form.Item name={["message"]} label="Message">
+      <Form.Item
+        label="Message"
+        name={["message"]}
+        rules={[{ required: true }]}
+      >
         <Input.TextArea
-          maxLength={250}
           showCount
-          placeholder="Enter message here"
           allowClear
-          autoSize={{ minRows: 6, maxRows: 6 }}
+          maxLength={250}
+          placeholder="Enter message here"
+          autoSize={{ minRows: 7, maxRows: 7 }}
         />
       </Form.Item>
-      <Form.Item>
+      <Form.Item style={{ margin: 0 }}>
         <Button loading={loading} type="primary" htmlType="submit">
-          Submit
+          Send
         </Button>
       </Form.Item>
     </Form>

@@ -1,11 +1,16 @@
 // Contact page container
 .contact-container {
   text-align: center;
-  width: 70%;
-  max-width: 450px;
-  min-height: 75vh; // moves footer down w/out adding scrol6 bar
 
-  .about-me {
-    margin-bottom: 45px;
+  .card-style {
+    background-color: @background1;
+    border-radius: 8px;
+    box-shadow: 0 28px 28px rgba(0, 0, 0, 0.7);
+    border: 1px solid fade(white, 10%);
+  }
+
+  // Adds extra margin for mobile viewing
+  @media screen and (max-width: 575px) {
+    margin-top: 12px;
   }
 }

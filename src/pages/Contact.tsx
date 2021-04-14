@@ -1,11 +1,13 @@
 // Dependency Imports
 import clsx from "clsx";
 // Ant Design
-import { Card } from "antd";
+import { Card, Typography } from "antd";
 // Components
 import { EmailForm } from "../components/EmailForm";
 // Hooks
-import { useCurrentBreakpoint } from "../hooks";
+import { useCurrentBreakpoint, useMobileFormatting } from "../hooks";
+// Constants
+const { Title } = Typography;
 
 /**
  * Contact Page
@@ -17,6 +19,7 @@ import { useCurrentBreakpoint } from "../hooks";
  */
 export const Contact: React.FC<{}> = () => {
   // Hooks
+  const mobileLayout = useMobileFormatting();
   const { breakpoint: bp } = useCurrentBreakpoint();
 
   return (
@@ -26,7 +29,11 @@ export const Contact: React.FC<{}> = () => {
           [`${bp}-height`]: bp.length,
         })}
       >
-        <Card className="card-style">
+        <Title level={3}>Send me a message!</Title>
+        <Card
+          className="card-style"
+          style={{ width: mobileLayout ? "300px" : "350px" }}
+        >
           <EmailForm />
         </Card>
       </div>

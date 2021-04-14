@@ -10,7 +10,9 @@ import useCurrentBreakpoint from "./useCurrentBreakpoint";
  * value if the current breakpoint is a mobile device ("xs")
  */
 const useMobileFormatting = () => {
+  // Local State
   const [mobileLayout, setMobileLayout] = useState(false);
+  // Hooks
   const { breakpoint } = useCurrentBreakpoint();
 
   // Adapt format to mobile

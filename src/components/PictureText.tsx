@@ -27,8 +27,8 @@ export const PictureText: React.FC<PictureTextProps> = ({
       </Title>
 
       <Title level={4} style={textStyle}>
-        I hope to use this site can share some of the music I've written,
-        learned, and continue to study.
+        I hope this site can share some of the music I've written, learned, and
+        continue to study.
       </Title>
     </div>
   );

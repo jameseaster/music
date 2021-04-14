@@ -34,7 +34,7 @@ export const Home: React.FC<{}> = () => {
   const toggleInfo = () => setViewInfo((viewInfo) => !viewInfo);
 
   return (
-    <div className="pages-container">
+    <div className="pages-container fade-in">
       <div
         className={clsx("home-container", "fade-in", {
           [`${bp}-height`]: bp.length,

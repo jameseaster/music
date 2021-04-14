@@ -29,7 +29,9 @@ export const Contact: React.FC<{}> = () => {
           [`${bp}-height`]: bp.length,
         })}
       >
-        <Title level={3}>Send me a message!</Title>
+        <Title level={3} style={{ fontWeight: 300 }}>
+          QUESTIONS & INQUIRIES
+        </Title>
         <Card
           className="card-style"
           style={{ width: mobileLayout ? "300px" : "350px" }}

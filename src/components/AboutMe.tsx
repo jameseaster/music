@@ -24,7 +24,7 @@ export const AboutMe: React.FC<AboutMeProps> = ({
   return (
     <div className={clsx(classNames)} style={styles} onClick={handleClick}>
       <Text strong>
-        A little about me, I am a jazz guitarist currently living in Colorado
+        A little about me - I am a jazz guitarist currently living in Colorado
         Springs, CO. I've studied classical music have a M.M. in Jazz Studies.
         Absorbing new music, writing for my trio, and performing might be some
         of my absolute most favorite things, barring good coffee and great

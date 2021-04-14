@@ -37,7 +37,7 @@ export const VideoCard: React.FC<{ video: Video }> = ({ video }) => {
 
   return (
     <>
-      <div className="new-video-card" onClick={handleClick}>
+      <div className="new-video-card fade-in" onClick={handleClick}>
         <img alt="video" src={image} />
         <Title level={3} className="img-title">
           {title}

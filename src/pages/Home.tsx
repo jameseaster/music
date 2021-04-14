@@ -5,7 +5,7 @@ import clsx from "clsx";
 // Ant Design Imports
 import { Typography, Space, Button } from "antd";
 // Ant Design Icons
-import { EllipsisOutlined, DownOutlined } from "@ant-design/icons";
+import { EllipsisOutlined } from "@ant-design/icons";
 // Components
 import { PictureText } from "../components/PictureText";
 import { AboutMe } from "../components/AboutMe";
@@ -81,18 +81,12 @@ export const Home: React.FC<{}> = () => {
 
         <Button
           type="text"
-          className={clsx("about-text-btn", "icon", {
-            "icon-open": viewInfo && mobileLayout,
-          })}
+          size="small"
           onClick={toggleInfo}
+          className="about-text-btn"
+          style={{ margin: viewInfo ? "0px" : "16px 0 24px" }}
         >
-          {mobileLayout ? (
-            <DownOutlined />
-          ) : viewInfo ? (
-            <EllipsisOutlined />
-          ) : (
-            "-More Info-"
-          )}
+          {viewInfo ? <EllipsisOutlined /> : "-More Info-"}
         </Button>
 
         {/* About Me Info */}

@@ -1,7 +1,5 @@
 // Ant Design Imports
-import { Menu, Button } from "antd";
-// Ant Design Icons
-import { UpOutlined, LeftOutlined } from "@ant-design/icons";
+import { Menu, Typography } from "antd";
 // Hooks
 import { useCurrentBreakpoint } from "../hooks";
 // Types
@@ -29,9 +27,9 @@ type ListProps = {
   selectedIndex?: number;
   list: Track[] | Video[];
   responsiveHeight?: boolean;
-  togglePlaylistView: () => void;
   handleSelect: MenuClickEventHandler;
 };
+const { Text } = Typography;
 
 /**
  * Playlist
@@ -45,7 +43,6 @@ export const Playlist: React.FC<ListProps> = ({
   height = 400,
   selectedIndex,
   noPadding = false,
-  togglePlaylistView,
   responsiveHeight = false,
 }) => {
   const { breakpoint } = useCurrentBreakpoint();
@@ -64,21 +61,7 @@ export const Playlist: React.FC<ListProps> = ({
   };
 
   return (
-    <div
-      style={{
-        minWidth: 200,
-        position: "relative",
-      }}
-    >
-      <div style={{ position: "absolute", top: "1%", left: "85%", zIndex: 3 }}>
-        <Button size="small" type="text" onClick={togglePlaylistView}>
-          {breakpoint === "xs" || breakpoint === "sm" ? (
-            <UpOutlined style={{ fontSize: "12px" }} />
-          ) : (
-            <LeftOutlined style={{ fontSize: "12px" }} />
-          )}
-        </Button>
-      </div>
+    <div style={{ width: "200px" }}>
       <Menu
         className={className}
         style={{
@@ -91,9 +74,18 @@ export const Playlist: React.FC<ListProps> = ({
         defaultSelectedKeys={["0"]}
         selectedKeys={[String(selectedIndex)]}
       >
-        {list.map((item: Track | Video, idx: number) => (
-          <Menu.Item key={idx}>{`${idx + 1}. ${item.title}`}</Menu.Item>
-        ))}
+        <Menu.ItemGroup
+          key="House Plants"
+          title={
+            <Text style={{ color: "white", fontWeight: 700 }}>
+              House Plants
+            </Text>
+          }
+        >
+          {list.map((item: Track | Video, idx: number) => (
+            <Menu.Item key={idx}>{`${idx + 1}. ${item.title}`}</Menu.Item>
+          ))}
+        </Menu.ItemGroup>
       </Menu>
     </div>
   );

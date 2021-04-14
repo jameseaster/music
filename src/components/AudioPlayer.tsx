@@ -167,18 +167,16 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
 
   return (
     <div
-      className={clsx("audio-player-container", {
+      className={clsx("audio-player-container fade-in", {
         column: size === "small",
       })}
     >
       <div className="audio-player">
-        {!viewPlaylist && (
-          <ExpandPlaylistButton
-            size={size}
-            viewPlaylist={viewPlaylist}
-            togglePlaylistView={togglePlaylistView}
-          />
-        )}
+        <ExpandPlaylistButton
+          size={size}
+          viewPlaylist={viewPlaylist}
+          togglePlaylistView={togglePlaylistView}
+        />
         <div className="track-info">
           <div className="imageWrapper">
             <Image
@@ -216,18 +214,13 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
       </div>
       {viewPlaylist && (
         <div
-          className={clsx(
-            "audio-playlist",
-
-            { "margin-top": size === "small" }
-          )}
+          className={clsx("audio-playlist", { "margin-top": size === "small" })}
         >
           <Playlist
             height={363}
             list={tracks}
             selectedIndex={trackIndex}
             handleSelect={handleSelect}
-            togglePlaylistView={togglePlaylistView}
           />
         </div>
       )}

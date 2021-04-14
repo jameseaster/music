@@ -1,9 +1,7 @@
 // Dependency Imports
 import clsx from "clsx";
-// Ant Design Imports
-import { Button } from "antd";
 // Ant Design Icons
-import { RightOutlined } from "@ant-design/icons";
+import { UnorderedListOutlined } from "@ant-design/icons";
 // Types
 type ExpandPlaylistButtonProps = {
   viewPlaylist: boolean;
@@ -23,20 +21,14 @@ export const ExpandPlaylistButton: React.FC<ExpandPlaylistButtonProps> = ({
 }) => {
   return (
     <div className="playlist-icon-container">
-      <Button
-        type="text"
-        size="small"
-        shape="circle"
+      <div
         onClick={togglePlaylistView}
-        className={clsx(
-          "icon",
-          { "icon-open": viewPlaylist && size !== "small" },
-          { condensed: !viewPlaylist && size === "small" },
-          { "condensed-open": viewPlaylist && size === "small" }
-        )}
+        className={clsx("playlist-btn", {
+          "playlist-btn-open": viewPlaylist,
+        })}
       >
-        <RightOutlined />
-      </Button>
+        <UnorderedListOutlined style={{ fontSize: "16px" }} />
+      </div>
     </div>
   );
 };

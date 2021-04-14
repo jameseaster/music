@@ -43,7 +43,6 @@ export const Video: React.FC<{}> = () => {
       <div className={clsx("video-container", { [`${bp}-height`]: bp.length })}>
         <Tabs
           centered
-          type="line"
           tabBarGutter={6}
           onChange={(key: string) =>
             isOfVidepType(key) ? setVideoType(key) : null

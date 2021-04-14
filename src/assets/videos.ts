@@ -1,4 +1,8 @@
 // PDF Imports
+import Softly from "./pdf/Softly.pdf";
+import Stablemates from "./pdf/Stablemates.pdf";
+import Second_Balcony_Jump from "./pdf/Second_Balcony_Jump.pdf";
+import It_Could_Happen_To_You from "./pdf/It_Could_Happen_To_You.pdf";
 import Peter_Bernstein_Lady_Bird from "./pdf/Peter_Bernstein_Lady_Bird.pdf";
 import Wes_Montgomery_Satin_Doll from "./pdf/Wes_Montgomery_Satin_Doll.pdf";
 import Miles_Davis_Milestones_old from "./pdf/Miles_Davis_Milestones_old.pdf";
@@ -14,7 +18,7 @@ export const allVideos = [
         title: "Dexter Gordon",
         sub_title: "Second Balcony Jump",
         url: "https://www.youtube.com/watch?v=eZyFPcJjOkA",
-        // pdf: ,
+        pdf: Second_Balcony_Jump,
       },
       {
         id: "z3FH5_C_pzo",
@@ -30,7 +34,7 @@ export const allVideos = [
         title: "Lee Morgan",
         sub_title: "Stablemates",
         url: "https://www.youtube.com/watch?v=nCrCLeIJzm8",
-        // pdf: ,
+        pdf: Stablemates,
       },
       {
         id: "Bq5qf50d-cI",
@@ -70,7 +74,7 @@ export const allVideos = [
         title: "Bill Hardman",
         sub_title: "Softly",
         url: "https://www.youtube.com/watch?v=uBfEOiovs9g",
-        // pdf: ,
+        pdf: Softly,
       },
       {
         id: "rW97jsCq9A8",
@@ -78,7 +82,7 @@ export const allVideos = [
         title: "Miles Davis",
         sub_title: "It Could Happen To You",
         url: "https://www.youtube.com/watch?v=rW97jsCq9A8",
-        // pdf: ,
+        pdf: It_Could_Happen_To_You,
       },
       {
         id: "7Dy6AteuOHE",

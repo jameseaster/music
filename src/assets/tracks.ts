@@ -31,11 +31,11 @@ export const tracks = [
     image: photo,
     color: "purple",
   },
-  {
-    title: "Self Talk",
-    artist: "James Easter",
-    audioSrc: "/tracks/Self_Talk.m4a",
-    image: photo,
-    color: "purple",
-  },
+  // {
+  //   title: "Self Talk",
+  //   artist: "James Easter",
+  //   audioSrc: "/tracks/Self_Talk.m4a",
+  //   image: photo,
+  //   color: "purple",
+  // },
 ];

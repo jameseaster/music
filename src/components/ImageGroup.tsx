@@ -16,7 +16,7 @@ import ochancey06 from "../assets/images/3x4-ochancey06.jpg";
  */
 export const ImageGroup: React.FC<{}> = () => (
   <Image.PreviewGroup>
-    <Space size={0} wrap>
+    <Space className="image-group-container" size={0} wrap>
       <Image className="image" src={gsg04} />
       <Image className="image" src={ochancey01} />
       <Image className="image" src={ochancey06} />

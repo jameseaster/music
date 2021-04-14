@@ -71,8 +71,8 @@ export const Home: React.FC<{}> = () => {
           <div className="about-text">
             <Text strong>
               Communicating through improvisation is unlike anything else. I
-              hope to use this website to share some of the music I've written,
-              learned, and continue to study.
+              hope this site can share some of the music I've written, learned,
+              and continue to study.
             </Text>
           </div>
         )}

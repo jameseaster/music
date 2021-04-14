@@ -43,7 +43,7 @@ export const allVideos = [
       {
         id: "gIe8VBxFGOM",
         image: "https://img.youtube.com/vi/gIe8VBxFGOM/maxresdefault.jpg",
-        title: "Kurt Rosenwinkel",
+        title: "K. Rosenwinkel",
         sub_title: "I'll Be Seeing You",
         url: "https://www.youtube.com/watch?v=gIe8VBxFGOM",
         // pdf: ,
@@ -51,7 +51,7 @@ export const allVideos = [
       {
         id: "lYYy3sZMRwQ",
         image: "https://img.youtube.com/vi/lYYy3sZMRwQ/maxresdefault.jpg",
-        title: "Wes Montgomery",
+        title: "W. Montgomery",
         sub_title: "Montgomeryland Funk",
         url: "https://www.youtube.com/watch?v=lYYy3sZMRwQ",
         // pdf: ,
@@ -59,7 +59,7 @@ export const allVideos = [
       {
         id: "lGysbDsvNOU",
         image: "https://img.youtube.com/vi/lGysbDsvNOU/maxresdefault.jpg",
-        title: "Wes Montgomery",
+        title: "W. Montgomery",
         sub_title: "Satin Doll",
         url: "https://www.youtube.com/watch?v=lGysbDsvNOU",
         pdf: Wes_Montgomery_Satin_Doll,
@@ -83,7 +83,7 @@ export const allVideos = [
       {
         id: "7Dy6AteuOHE",
         image: "https://img.youtube.com/vi/7Dy6AteuOHE/maxresdefault.jpg",
-        title: "Peter Bernstien",
+        title: "Peter Bernstein",
         sub_title: "Lady Bird",
         url: "https://www.youtube.com/watch?v=7Dy6AteuOHE",
         pdf: Peter_Bernstein_Lady_Bird,
@@ -97,22 +97,15 @@ export const allVideos = [
       {
         id: "Ka9EV91Yku8",
         image: "https://img.youtube.com/vi/Ka9EV91Yku8/maxresdefault.jpg",
-        title: "Out of Nowhere (J.Green)",
-        sub_title: "@Apple Barrel",
+        sub_title: "Out of Nowhere (J.Green)",
+        title: "@Apple Barrel",
         url: "https://www.youtube.com/watch?v=Ka9EV91Yku8",
-      },
-      {
-        id: "ymHZx1rr9Bg",
-        image: "https://img.youtube.com/vi/ymHZx1rr9Bg/maxresdefault.jpg",
-        title: "I'll Be Seeing You (S.Fain)",
-        sub_title: "@Little Gem Saloon",
-        url: "https://www.youtube.com/watch?v=ymHZx1rr9Bg",
       },
       {
         id: "kIeHv78cMn8",
         image: "https://img.youtube.com/vi/kIeHv78cMn8/maxresdefault.jpg",
-        title: "Blues by Five (R.Garland)",
-        sub_title: "@Old Pointe Bar",
+        sub_title: "Blues by Five (R.Garland)",
+        title: "@Old Point Bar",
         url: "https://www.youtube.com/watch?v=kIeHv78cMn8",
       },
     ],

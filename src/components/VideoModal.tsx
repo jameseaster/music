@@ -23,12 +23,12 @@ export const VideoModal: React.FC<{
     };
   };
   const dimensions: Dimensions = {
-    xs: { width: 350, height: "197px" },
-    sm: { width: 400, height: "225px" },
-    md: { width: 500, height: "281px" },
-    lg: { width: 600, height: "338px" },
-    xl: { width: 700, height: "394px" },
-    xxl: { width: 800, height: "450px" },
+    xs: { width: 360, height: "203px" },
+    sm: { width: 570, height: "321px" },
+    md: { width: 700, height: "394px" },
+    lg: { width: 850, height: "478px" },
+    xl: { width: 900, height: "506px" },
+    xxl: { width: 900, height: "506px" },
   };
 
   return (

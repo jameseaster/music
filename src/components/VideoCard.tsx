@@ -1,11 +1,7 @@
 // React Imports
 import { useState } from "react";
-// Dependency Imports
-import clsx from "clsx";
 // Ant Design Imports
-import { Card, Typography } from "antd";
-// Ant Design Icons
-import { CaretRightOutlined } from "@ant-design/icons";
+import { Typography } from "antd";
 // Components
 import { PdfButton } from "./PdfButton";
 import { VideoModal } from "./VideoModal";
@@ -41,18 +37,15 @@ export const VideoCard: React.FC<{ video: Video }> = ({ video }) => {
 
   return (
     <>
-      <div className="video-card-container fade-in">
-        <Card className={clsx({ "no-pdf-height": !pdf })} onClick={handleClick}>
-          <div className="img-container">
-            <img alt="example" src={image} />
-            <CaretRightOutlined className="play-icon" />
-          </div>
-          <div className={clsx("card-body", { "no-pdf-margin": !pdf })}>
-            <Title level={5}>{title}</Title>
-            <Text type="secondary">{sub_title}</Text>
-            <PdfButton pdf={pdf} />
-          </div>
-        </Card>
+      <div className="new-video-card" onClick={handleClick}>
+        <img alt="video" src={image} />
+        <Title level={3} className="img-title">
+          {title}
+        </Title>
+        <Text type="secondary" className="img-subtitle">
+          {sub_title}
+        </Text>
+        <PdfButton pdf={pdf} />
       </div>
       <VideoModal url={url} visible={openModal} onCancel={onCancel} />
     </>

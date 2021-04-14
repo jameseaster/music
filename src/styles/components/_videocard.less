@@ -1,79 +1,63 @@
-@VideoCardWidth: 260px;
+// Video Card
+.new-video-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 278px;
+  position: relative;
+  text-align: center;
+  box-shadow: 0 28px 28px rgba(0, 0, 0, 0.5);
+  &:hover {
+    box-shadow: 0 28px 28px rgba(0, 0, 0, 0.9);
 
-.video-card-container {
-  h5.ant-typography {
-    margin-bottom: 0;
-    margin: 6px 0 0;
+    filter: brightness(150%);
+    transition: box-shadow 0.1s;
   }
 
   img {
-    width: @VideoCardWidth;
-    height: 250px;
-    object-fit: cover;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
+    width: 100%;
+    filter: brightness(55%);
+    border: 1px solid white;
+    border-radius: 4px;
   }
 
-  .ant-card {
-    border-radius: 8px;
-    background-color: slategrey;
-    box-shadow: 0 28px 28px rgba(0, 0, 0, 0.5);
+  .img-title {
+    position: absolute;
+    left: 5px;
+    bottom: 0px;
+    color: white;
+    font-weight: 800;
+    font-size: 30px;
+  }
 
-    &:hover {
-      box-shadow: 0px 5px 45px rgba(255, 255, 255, 0.25);
-      filter: brightness(115%);
-      transition: box-shadow 0.1s;
-
-      .play-icon {
-        box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.5);
-        transition: box-shadow 0.1s;
-      }
-    }
-
-    .ant-card-body {
-      display: flex;
-      flex-direction: column;
-      padding: 0px;
-      border-radius: 8px;
-      width: @VideoCardWidth;
-    }
+  .img-subtitle {
+    position: absolute;
+    left: 5px;
+    bottom: -4px;
+    color: white;
+    font-weight: 200;
+    font-size: 20px;
   }
 
   .pdf-button {
-    margin-top: 8px;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
-  }
-  .no-pdf-height {
-    height: 336px;
-  }
-  .no-pdf-margin {
-    margin-top: 12px;
-  }
-
-  // Allows for play icon to sit on top of image
-  .img-container {
-    position: relative;
-  }
-  .img-container img {
-    display: block;
-  }
-  .img-container .play-icon {
     position: absolute;
-    bottom: 32%;
-    left: 39%;
-    font-size: 40px;
-    background-color: rgba(0, 0, 0, 0.7);
-
-    border-radius: 8px;
-    padding: 6px 7px 6px 12px;
+    right: 0;
+    height: 100%;
+    border: 1px solid white;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    filter: brightness(55%);
   }
-}
 
-// Video Modal Container
-.modal-container {
-  .ant-modal-content {
+  .pdf-a {
     display: flex;
-    padding: 0px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .pdf-btn-text {
+    font-weight: 900;
   }
 }

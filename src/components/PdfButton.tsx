@@ -1,9 +1,9 @@
 // React Imports
 import { MouseEvent } from "react";
 // Ant Design Imports
-import { Button } from "antd";
-// Ant Design Icons
-import { FilePdfOutlined } from "@ant-design/icons";
+import { Button, Typography } from "antd";
+// Constants
+const { Text } = Typography;
 
 /**
  * PdfButton
@@ -18,15 +18,15 @@ export const PdfButton: React.FC<{ pdf: any }> = ({
 
   return !!pdf ? (
     <Button
-      block
       size="small"
       type="primary"
-      className="pdf-button"
       onClick={handleClick}
+      className="pdf-button"
     >
-      <a className="pdf" target="_blank" rel="noopener noreferrer" href={pdf}>
-        {"Download PDF "}
-        <FilePdfOutlined />
+      <a className="pdf-a" href={pdf} target="_blank" rel="noopener noreferrer">
+        <Text className="pdf-btn-text">P</Text>
+        <Text className="pdf-btn-text">D</Text>
+        <Text className="pdf-btn-text">F</Text>
       </a>
     </Button>
   ) : null;

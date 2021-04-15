@@ -2,6 +2,7 @@
 import Softly from "./pdf/Softly.pdf";
 import Stablemates from "./pdf/Stablemates.pdf";
 import Second_Balcony_Jump from "./pdf/Second_Balcony_Jump.pdf";
+import Ill_Be_Seeing_You from "./pdf/Ill_Be_Seeing_You.pdf";
 import It_Could_Happen_To_You from "./pdf/It_Could_Happen_To_You.pdf";
 import Peter_Bernstein_Lady_Bird from "./pdf/Peter_Bernstein_Lady_Bird.pdf";
 import Wes_Montgomery_Satin_Doll from "./pdf/Wes_Montgomery_Satin_Doll.pdf";
@@ -50,7 +51,7 @@ export const allVideos = [
         title: "K. Rosenwinkel",
         sub_title: "I'll Be Seeing You",
         url: "https://www.youtube.com/watch?v=gIe8VBxFGOM",
-        // pdf: ,
+        pdf: Ill_Be_Seeing_You,
       },
       {
         id: "lYYy3sZMRwQ",

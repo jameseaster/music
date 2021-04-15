@@ -100,6 +100,29 @@ export const allVideos = [
     title: "Live",
     info: [
       {
+        id: "oH0bN-_YZd4",
+        image: "https://img.youtube.com/vi/oH0bN-_YZd4/maxresdefault.jpg",
+        sub_title: "It Could Happen To You (Van-Heusen)",
+        title: "@The Hippodrome",
+        url: "https://www.youtube.com/watch?v=oH0bN-_YZd4",
+        small_subtitle: true,
+      },
+      {
+        id: "wTY8S_s-z-k",
+        image: "https://img.youtube.com/vi/wTY8S_s-z-k/maxresdefault.jpg",
+        sub_title: "Antrhopology (C.Parker)",
+        title: "@The Hippodrome",
+        url: "https://www.youtube.com/watch?v=wTY8S_s-z-k",
+      },
+      {
+        id: "QC0a46cX5Sw",
+        image: "https://img.youtube.com/vi/QC0a46cX5Sw/maxresdefault.jpg",
+        sub_title: "Lady Be Good (G.Gerswhin)",
+        title: "@Little Gem Saloon",
+        url: "https://www.youtube.com/watch?v=QC0a46cX5Sw",
+        small_title: true,
+      },
+      {
         id: "Ka9EV91Yku8",
         image: "https://img.youtube.com/vi/Ka9EV91Yku8/maxresdefault.jpg",
         sub_title: "Out of Nowhere (J.Green)",

@@ -1,5 +1,7 @@
 // React Imports
 import { useState } from "react";
+// Dependency Imports
+import clsx from "clsx";
 // Ant Design Imports
 import { Typography } from "antd";
 // Components
@@ -14,8 +16,9 @@ type Video = {
   url: string;
   image: string;
   title: string;
-  pdf_title?: string;
   sub_title?: string;
+  small_title?: boolean;
+  small_subtitle?: boolean;
 };
 
 /**
@@ -29,7 +32,15 @@ export const VideoCard: React.FC<{ video: Video }> = ({ video }) => {
   // Local State
   const [openModal, setOpenModal] = useState(false);
   // Constants
-  const { title, sub_title, image, pdf, url } = video;
+  const {
+    title,
+    sub_title,
+    image,
+    pdf,
+    url,
+    small_title,
+    small_subtitle,
+  } = video;
   // Opens and closes VideoModal
   const handleClick = () => setOpenModal(true);
   // Closes VideoModal
@@ -39,10 +50,16 @@ export const VideoCard: React.FC<{ video: Video }> = ({ video }) => {
     <>
       <div className="new-video-card fade-in" onClick={handleClick}>
         <img alt="video" src={image} />
-        <Title level={3} className="img-title">
+        <Title
+          level={3}
+          className={clsx("img-title", { "small-title": small_title })}
+        >
           {title}
         </Title>
-        <Text type="secondary" className="img-subtitle">
+        <Text
+          type="secondary"
+          className={clsx("img-subtitle", { "small-subtitle": small_subtitle })}
+        >
           {sub_title}
         </Text>
         <PdfButton pdf={pdf} />

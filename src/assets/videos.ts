@@ -1,8 +1,9 @@
 // PDF Imports
 import Softly from "./pdf/Softly.pdf";
+import Witch_Hunt from "./pdf/Witch_Hunt.pdf";
 import Stablemates from "./pdf/Stablemates.pdf";
-import Second_Balcony_Jump from "./pdf/Second_Balcony_Jump.pdf";
 import Ill_Be_Seeing_You from "./pdf/Ill_Be_Seeing_You.pdf";
+import Second_Balcony_Jump from "./pdf/Second_Balcony_Jump.pdf";
 import It_Could_Happen_To_You from "./pdf/It_Could_Happen_To_You.pdf";
 import Peter_Bernstein_Lady_Bird from "./pdf/Peter_Bernstein_Lady_Bird.pdf";
 import Wes_Montgomery_Satin_Doll from "./pdf/Wes_Montgomery_Satin_Doll.pdf";
@@ -43,7 +44,7 @@ export const allVideos = [
         title: "Herbie Hancock",
         sub_title: "Witch Hunt",
         url: "https://www.youtube.com/watch?v=Bq5qf50d-cI",
-        // pdf: ,
+        pdf: Witch_Hunt,
       },
       {
         id: "gIe8VBxFGOM",

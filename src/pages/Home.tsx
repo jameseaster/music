@@ -1,21 +1,14 @@
-// React Imports
-import { useState } from "react";
 // Dependency Imports
 import clsx from "clsx";
 // Ant Design Imports
-import { Typography, Space, Button } from "antd";
-// Ant Design Icons
-import { EllipsisOutlined } from "@ant-design/icons";
-// Components
-import { PictureText } from "../components/PictureText";
-import { AboutMe } from "../components/AboutMe";
+import { Typography, Space } from "antd";
 // Assets
 import home from "../assets/images/3x2-gsg01.jpg";
-import mobile from "../assets/images/3x4-gsg01-mobile.jpg";
+import mobile from "../assets/images/3x5-gsg01-mobile.jpg";
 // Hooks
 import { useMobileFormatting, useCurrentBreakpoint } from "../hooks";
 
-const { Title, Text } = Typography;
+const { Title } = Typography;
 /**
  * Home Page
  *
@@ -23,15 +16,9 @@ const { Title, Text } = Typography;
  * This is the initial view that a webpage visitor is greeted with
  */
 export const Home: React.FC<{}> = () => {
-  // Local State
-  const [viewInfo, setViewInfo] = useState(false);
-
   // Hooks
   const mobileLayout = useMobileFormatting();
   const { breakpoint: bp } = useCurrentBreakpoint();
-
-  // Click Handler
-  const toggleInfo = () => setViewInfo((viewInfo) => !viewInfo);
 
   return (
     <div className="pages-container fade-in">
@@ -44,7 +31,7 @@ export const Home: React.FC<{}> = () => {
           // Web layout //
           <Space
             direction="vertical"
-            style={{ position: "relative", textAlign: "center" }}
+            style={{ position: "relative", textAlign: "center", width: "95%" }}
           >
             <img src={home} alt="home" style={{ maxWidth: "100%" }}></img>
             <Title level={1} className="picture-title">
@@ -53,7 +40,6 @@ export const Home: React.FC<{}> = () => {
             <Title level={1} className="picture-subtitle">
               musician/ guitarist/ composer
             </Title>
-            <PictureText classNames="picture-text" />
           </Space>
         ) : (
           // Mobile layout //
@@ -67,30 +53,6 @@ export const Home: React.FC<{}> = () => {
             </Title>
           </Space>
         )}
-        {mobileLayout && (
-          <div className="about-text">
-            <Text strong>
-              Communicating through improvisation is unlike anything else. I
-              hope this site can share some of the music I've written, learned,
-              and continue to study.
-            </Text>
-          </div>
-        )}
-
-        {/* Show more info button */}
-
-        <Button
-          type="text"
-          size="small"
-          onClick={toggleInfo}
-          className="about-text-btn"
-          style={{ margin: viewInfo ? "0px" : "16px 0 24px" }}
-        >
-          {viewInfo ? <EllipsisOutlined /> : "-More Info-"}
-        </Button>
-
-        {/* About Me Info */}
-        {viewInfo && <AboutMe classNames="about-text" />}
       </div>
     </div>
   );

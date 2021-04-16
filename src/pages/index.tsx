@@ -4,7 +4,8 @@ import { Switch, Route } from "react-router-dom";
 import { Layout /*Divider */ } from "antd";
 // Components
 import { Home } from "./Home";
-import { Audio } from "./Audio";
+// import { About } from "./About";
+import { Music } from "./Music";
 import { Video } from "./Video";
 import { Contact } from "./Contact";
 import { Gallery } from "./Gallery";
@@ -21,14 +22,19 @@ const { Content } = Layout;
  */
 export const Pages: React.FC<{}> = () => (
   <Switch>
-    <Route path="/audio">
+    {/* <Route path="/about">
       <Content>
-        <Audio />
+        <About />
       </Content>
-    </Route>
+    </Route> */}
     <Route path="/video">
       <Content>
         <Video />
+      </Content>
+    </Route>
+    <Route path="/music">
+      <Content>
+        <Music />
       </Content>
     </Route>
     <Route path="/gallery">

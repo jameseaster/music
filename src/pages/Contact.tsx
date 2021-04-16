@@ -29,9 +29,18 @@ export const Contact: React.FC<{}> = () => {
           [`${bp}-height`]: bp.length,
         })}
       >
-        <Title level={3} style={{ fontWeight: 300 }}>
+        <div
+          className="contact-text-container"
+          style={{ width: "325px", margin: "24px" }}
+        >
+          <Title level={5}>
+            I'm excited to share a lot of new music in 2021. Feel free to write
+            me anytime and thanks for checking out my website!
+          </Title>
+        </div>
+        {/* <Title level={3} style={{ fontWeight: 300 }}>
           QUESTIONS & INQUIRIES
-        </Title>
+        </Title> */}
         <Card
           className="card-style"
           style={{ width: mobileLayout ? "300px" : "350px" }}

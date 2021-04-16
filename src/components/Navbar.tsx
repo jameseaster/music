@@ -73,12 +73,15 @@ export const Navbar: React.FC<{}> = () => {
               <Menu.Item key="Home" style={menuItemStyle}>
                 <Link to="/">Home</Link>
               </Menu.Item>
-              <Menu.Item key="Audio" style={menuItemStyle}>
-                <Link to="/audio">Audio</Link>
+              <Menu.Item key="Music" style={menuItemStyle}>
+                <Link to="/music">Music</Link>
               </Menu.Item>
               <Menu.Item key="Video" style={menuItemStyle}>
                 <Link to="/video">Video</Link>
               </Menu.Item>
+              {/* <Menu.Item key="About" style={menuItemStyle}>
+                <Link to="/about">About</Link>
+              </Menu.Item> */}
               <Menu.Item key="gallery" style={menuItemStyle}>
                 <Link to="/gallery">Gallery</Link>
               </Menu.Item>
@@ -112,11 +115,14 @@ export const Navbar: React.FC<{}> = () => {
             <Link to="/">Home</Link>
           </Button>
           <Button type="text" onClick={onClose} style={menuItemStyle}>
-            <Link to="/audio">Music</Link>
+            <Link to="/music">Music</Link>
           </Button>
           <Button type="text" onClick={onClose} style={menuItemStyle}>
             <Link to="/video">Video</Link>
           </Button>
+          {/* <Button type="text" onClick={onClose} style={menuItemStyle}>
+            <Link to="/about">About</Link>
+          </Button> */}
           <Button type="text" onClick={onClose} style={menuItemStyle}>
             <Link to="/gallery">Gallery</Link>
           </Button>

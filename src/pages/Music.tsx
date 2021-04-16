@@ -11,11 +11,11 @@ import { MenuClickEventHandler } from "rc-menu/lib/interface";
 // Hooks
 import { useCurrentBreakpoint } from "../hooks";
 /**
- * Audio Page
+ * Music Page
  *
  * TODO:
  */
-export const Audio: React.FC<{}> = () => {
+export const Music: React.FC<{}> = () => {
   // Local State
   const [trackIndex, setTrackIndex] = useState(0);
 

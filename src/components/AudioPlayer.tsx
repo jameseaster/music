@@ -96,9 +96,9 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
     // Hides playlist if the size of the window is xs or sm
     if (initialLoad && breakpoint !== "") {
       setInitialLoad(false);
-      if (breakpoint !== "xs" && breakpoint !== "sm") {
-        setViewPlaylist(true);
-      }
+      // if (breakpoint !== "xs" && breakpoint !== "sm") {
+      //   setViewPlaylist(true);
+      // }
     }
 
     return breakpoint === "xs" || breakpoint === "sm"

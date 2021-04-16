@@ -101,6 +101,14 @@ export const allVideos = [
     title: "Live",
     info: [
       {
+        id: "A-8_s_-AYUM",
+        image: "https://img.youtube.com/vi/A-8_s_-AYUM/maxresdefault.jpg",
+        sub_title: "Girl From Ipanema (Jobim)",
+        title: "@Celebration Pointe",
+        url: "https://www.youtube.com/watch?v=A-8_s_-AYUM",
+        small_title: true,
+      },
+      {
         id: "oH0bN-_YZd4",
         image: "https://img.youtube.com/vi/oH0bN-_YZd4/maxresdefault.jpg",
         sub_title: "It Could Happen To You (Van-Heusen)",
@@ -111,14 +119,14 @@ export const allVideos = [
       {
         id: "wTY8S_s-z-k",
         image: "https://img.youtube.com/vi/wTY8S_s-z-k/maxresdefault.jpg",
-        sub_title: "Antrhopology (C.Parker)",
+        sub_title: "Antrhopology (Parker)",
         title: "@The Hippodrome",
         url: "https://www.youtube.com/watch?v=wTY8S_s-z-k",
       },
       {
         id: "QC0a46cX5Sw",
         image: "https://img.youtube.com/vi/QC0a46cX5Sw/maxresdefault.jpg",
-        sub_title: "Lady Be Good (G.Gerswhin)",
+        sub_title: "Lady Be Good (Gerswhin)",
         title: "@Little Gem Saloon",
         url: "https://www.youtube.com/watch?v=QC0a46cX5Sw",
         small_title: true,
@@ -126,14 +134,14 @@ export const allVideos = [
       {
         id: "Ka9EV91Yku8",
         image: "https://img.youtube.com/vi/Ka9EV91Yku8/maxresdefault.jpg",
-        sub_title: "Out of Nowhere (J.Green)",
+        sub_title: "Out of Nowhere (Green)",
         title: "@Apple Barrel",
         url: "https://www.youtube.com/watch?v=Ka9EV91Yku8",
       },
       {
         id: "kIeHv78cMn8",
         image: "https://img.youtube.com/vi/kIeHv78cMn8/maxresdefault.jpg",
-        sub_title: "Blues by Five (R.Garland)",
+        sub_title: "Blues by Five (Garland)",
         title: "@Old Point Bar",
         url: "https://www.youtube.com/watch?v=kIeHv78cMn8",
       },

@@ -1,4 +1,5 @@
 // PDF Imports
+import Emily from "./pdf/Emily.pdf";
 import Softly from "./pdf/Softly.pdf";
 import Witch_Hunt from "./pdf/Witch_Hunt.pdf";
 import Stablemates from "./pdf/Stablemates.pdf";
@@ -14,6 +15,14 @@ export const allVideos = [
   {
     title: "Transcriptions",
     info: [
+      {
+        id: "LJc4CPRfFoM",
+        image: "https://img.youtube.com/vi/LJc4CPRfFoM/maxresdefault.jpg",
+        title: "Steve Masakowski",
+        sub_title: "Emily",
+        url: "https://www.youtube.com/watch?v=LJc4CPRfFoM",
+        pdf: Emily,
+      },
       {
         id: "eZyFPcJjOkA",
         image: "https://img.youtube.com/vi/eZyFPcJjOkA/maxresdefault.jpg",

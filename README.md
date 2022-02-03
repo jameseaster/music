@@ -23,13 +23,6 @@ James Easter Music is the home for my pictures, audio & video recordings, and a 
 
 <br>
 
-## Scripts
-
-- `yarn start`: starts app with craco, open on localhost:3000
-- `yarn build`: Builds the production app with craco
-- `yarn test`: Runs the tests with craco
-- `yarn eject`: Ejects the app
-
 ## Resources
 
 - [Less](http://lesscss.org/)

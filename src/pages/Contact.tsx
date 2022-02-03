@@ -7,6 +7,8 @@ import { EmailForm } from "../components/EmailForm";
 // Hooks
 import { useCurrentBreakpoint, useMobileFormatting } from "../hooks";
 // Constants
+import { CONSTANTS } from "../utils/constants";
+
 const { Title } = Typography;
 
 /**
@@ -34,8 +36,9 @@ export const Contact: React.FC<{}> = () => {
           style={{ width: "325px", margin: "24px" }}
         >
           <Title level={5}>
-            I'm excited to share a lot of new music in 2021. Feel free to write
-            me anytime and thanks for checking out my website!
+            I'm excited to share a lot of new music in {CONSTANTS.currentYear}.
+            Feel free to write me anytime and thanks for checking out my
+            website!
           </Title>
         </div>
         {/* <Title level={3} style={{ fontWeight: 300 }}>

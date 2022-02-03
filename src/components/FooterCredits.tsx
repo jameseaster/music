@@ -3,6 +3,8 @@ import clsx from "clsx";
 // Ant Design Imports
 import { Layout, Typography } from "antd";
 // Constants
+import { CONSTANTS } from "../utils/constants";
+
 const { Footer } = Layout;
 const { Text } = Typography;
 
@@ -15,7 +17,9 @@ const { Text } = Typography;
 export const FooterCredits: React.FC<{}> = () => (
   <Footer className={clsx("fade-in")}>
     <div className="footer-text-container">
-      <Text className="text">All content © 2021 James Easter</Text>
+      <Text className="text">
+        All content © {CONSTANTS.currentYear} James Easter
+      </Text>
       <Text className="text">
         Site built & designed by{" "}
         <a

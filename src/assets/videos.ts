@@ -22,7 +22,6 @@ export const allVideos = [
         sub_title: "Emily",
         url: "https://www.youtube.com/watch?v=LJc4CPRfFoM",
         small_title: true,
-
         pdf: Emily,
       },
       {

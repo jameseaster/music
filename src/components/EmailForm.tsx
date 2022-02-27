@@ -40,18 +40,25 @@ export const EmailForm: React.FC<{}> = () => {
       message: values.message,
     };
 
-    // Send email to lambda function
-    const result: ReqResult = await axios.post(CONSTANTS.lambdaURL, emailInfo);
+    try {
+      // Send email to lambda function
+      const result: ReqResult = await axios.post(
+        CONSTANTS.lambdaURL,
+        emailInfo
+      );
 
-    // Handle errors
-    if (result.error) {
-      errorModal();
-    } else {
+      console.log({ result });
+      // Handle errors
+      if (result.error) throw result.error;
       successModal();
       form.resetFields();
+    } catch (error) {
+      console.log({ error });
+      errorModal();
+    } finally {
+      // Clear loading
+      setLoading(false);
     }
-    // Clear loading
-    setLoading(false);
   };
 
   // Success confirmation

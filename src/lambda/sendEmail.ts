@@ -27,10 +27,12 @@ const handler: Handler = async (event: APIGatewayEvent) => {
       template_id: process.env.EMAILJS_TEMPLATE_ID,
       template_params: JSON.parse(event.body || "{}"),
     };
-    await axios.post(process.env.EMAIL_API_URL || "", reqBody);
-    return response["200"];
+    const result = await axios.post(process.env.EMAIL_API_URL || "", reqBody);
+
+    return { ...response["200"], result: JSON.stringify(result.data) };
   } catch (error) {
-    return response["404"];
+    console.log(error);
+    return { ...response["404"] };
   }
 };
 

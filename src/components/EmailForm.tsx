@@ -1,18 +1,20 @@
-// React Imports
-import { useState } from "react";
-// Dependency Imports
 import axios from "axios";
-import emailjs from "emailjs-com";
-// Ant Design Imports
+import { useState } from "react";
+import { CONSTANTS } from "../utils/constants";
 import { Form, Input, Button, Modal } from "antd";
 
 // Constants
-/* eslint-disable no-template-curly-in-string */
 const validateMessages = {
+  /* eslint-disable no-template-curly-in-string */
   required: "${label} is required",
   types: { email: "${label} is not a valid email" },
+  /* eslint-disable no-template-curly-in-string */
 };
-/* eslint-enable no-template-curly-in-string */
+
+interface ReqResult {
+  error: boolean;
+  message: string;
+}
 
 /**
  * EmailForm
@@ -27,36 +29,29 @@ export const EmailForm: React.FC<{}> = () => {
   const [form] = Form.useForm();
 
   // Handle form submition
-  const onFinish = (values: any) => {
+  const onFinish = async (values: any) => {
     // Prevent submitting another message
     setLoading(true);
 
     // Values from form
-    const templateParams = {
+    const emailInfo = {
       from_name: values.name,
       reply_to: values.email,
       message: values.message,
     };
 
-    // Get credentials
-    axios("/.netlify/functions/sendEmail").then((res: any) => {
-      const { service_id, template_id, user_id } = res.data;
+    // Send email to lambda function
+    const result: ReqResult = await axios.post(CONSTANTS.lambdaURL, emailInfo);
 
-      // Send email
-      emailjs
-        .send(service_id, template_id, templateParams, user_id)
-        .then((result) => {
-          successModal();
-          setLoading(false);
-          form.resetFields();
-          console.log(result.status);
-        })
-        .catch((error) => {
-          errorModal();
-          setLoading(false);
-          console.log(error.status);
-        });
-    });
+    // Handle errors
+    if (result.error) {
+      errorModal();
+    } else {
+      successModal();
+      form.resetFields();
+    }
+    // Clear loading
+    setLoading(false);
   };
 
   // Success confirmation

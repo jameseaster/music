@@ -25,14 +25,12 @@ const handler: Handler = async (event: APIGatewayEvent) => {
       accessToken: process.env.ACCESS_TOKEN,
       service_id: process.env.EMAILJS_SERVICE_ID,
       template_id: process.env.EMAILJS_TEMPLATE_ID,
-      template_params: JSON.parse(event.body || "{}"),
+      template_params: JSON.parse(`${event.body}`),
     };
-    const result = await axios.post(process.env.EMAIL_API_URL || "", reqBody);
-
-    return { ...response["200"], result: JSON.stringify(result.data) };
+    await axios.post(`${process.env.EMAIL_API_URL}`, reqBody);
+    return response["200"];
   } catch (error) {
-    console.log(error);
-    return { ...response["404"] };
+    return response["404"];
   }
 };
 

@@ -11,7 +11,7 @@ const validateMessages = {
   /* eslint-disable no-template-curly-in-string */
 };
 
-interface ReqResult {
+interface ReqResponse {
   error: boolean;
   message: string;
 }
@@ -42,14 +42,9 @@ export const EmailForm: React.FC<{}> = () => {
 
     try {
       // Send email to lambda function
-      const result: ReqResult = await axios.post(
-        CONSTANTS.lambdaURL,
-        emailInfo
-      );
-
-      console.log({ result });
+      const res: ReqResponse = await axios.post(CONSTANTS.lambdaURL, emailInfo);
       // Handle errors
-      if (result.error) throw result.error;
+      if (res.error) throw res.error;
       successModal();
       form.resetFields();
     } catch (error) {
